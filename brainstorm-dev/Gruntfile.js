@@ -7,31 +7,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'lib/styles/main.min.css': 'src/styles/main.scss'
-                }
-            }
-        },
-
-        uglify: {
-            options: {
-                preserveComments: false
-            },
-            my_target: {
-                files: {
-                    'lib/js/app.min.js': ['lib/js/app.js'],
-                    'lib/js/vendor.min.js': ['lib/js/vendor.js']
-                }
-            }
-        },
-
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                files: {
-                    'lib/js/app.js': ['src/js/*.js'],
-                    'lib/js/vendor.js': ['src/js/vendor/*.js']
+                    'libdev/styles/main.min.css': 'src/styles/main.scss'
                 }
             }
         },
@@ -48,10 +24,6 @@ module.exports = function(grunt) {
                     dest: 'images/'
                 }]
             }
-        },
-
-        jshint: {
-            all: ['Gruntfile.js', 'src/*.js', 'test/*.js']
         },
 
         mochaTest: {
@@ -74,7 +46,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'src/js/main.js': 'src/js/main.js'
+                    'libdev/js/app.js': 'src/js/app.js'
                 }
             }
         },
@@ -98,9 +70,9 @@ module.exports = function(grunt) {
 
             javascript: {
                 files: [
-                    'src/js/**/*', 'test/*.js'
+                    'src/js/*.js', 'test/*.js'
                 ],
-                tasks: ['mochaTest', 'jshint', 'concat', 'uglify']
+                tasks: ['mochaTest', 'babel']
             },
 
             img: {
@@ -109,7 +81,7 @@ module.exports = function(grunt) {
             },
 
             html: {
-                files: ['index.haml'],
+                files: ['index.haml', 'profile.haml', 'game.haml', 'leaderboard.haml'],
                 tasks: ['haml']
             }
         }
@@ -117,9 +89,6 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-babel');
@@ -128,9 +97,6 @@ module.exports = function(grunt) {
         'sass',
         'watch',
         'imagemin',
-        'concat',
-        'uglify',
-        'jshint',
         'mochaTest',
         'babel',
         'haml'
