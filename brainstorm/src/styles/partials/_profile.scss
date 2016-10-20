@@ -1,19 +1,23 @@
 html {
     height: 100%;
 }
+
 body.profile {
     background: url('../../images/arches.png');
     height: 100%;
 }
+
 header {
     background: $tradewind;
     height: 80px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
     img {
         height: 65px;
         margin: 7.5px 0 0 30px;
         float: left;
     }
+
     h1 {
         color: #f1ebe5;
         font-size: 70px;
@@ -22,8 +26,15 @@ header {
         font-family: $fredoka;
         float: left;
         text-shadow: 0 3.34px 2.224px $raven,0 -2px 1px #fff;
+        transition: all 1.5s ease;
+
+        &:hover {
+          text-shadow: none;
+          color: $pomegranate;
+        }
     }
 }
+
 .profile-container {
     width: 30%;
     height: 400px;
@@ -56,46 +67,61 @@ header {
         }
     }
 
-    li {
-        margin: 10px 0 0 30px;
-        font-size: 20px;
-        &.name, &.score {
-          text-align: center;
-          margin-left: 0;
+    .user-info {
+        li {
+            margin: 10px 0 0 30px;
+            font-size: 20px;
+
+            &.name,
+            &.score {
+                text-align: center;
+                margin-left: 0;
+            }
+
+            &.name {
+                font-size: 25px;
+            }
+
+            &.score {
+                font-style: italic;
+                font-size: 15px;
+            }
+
+            span {
+                font-size: 20px;
+            }
+
+            img {
+                height: 30px;
+                float: left;
+                margin-right: 15px;
+            }
+
+            p {
+                color: $offWhite;
+                line-height: 30px;
+                letter-spacing: 1px;
+            }
         }
-        &.name {
-          font-size: 25px;
-        }
-        &.score {
-          font-style: italic;
-          font-size: 15px;
-        }
-        span {
-          font-size: 20px;
-        }
-        img {
-            height: 30px;
-            float: left;
-            margin-right: 15px;
-        }
-        p {
+
+        hr {
             color: $offWhite;
-            line-height: 30px;
-            letter-spacing: 1px;
+            opacity: 0.5;
+            width: 70%;
+            margin: 20px auto;
+        }
+
+        .edit {
+            text-align: right;
+
+            img {
+                height: 25px;
+                margin-right: 10px;
+                margin-top: 15px;
+            }
         }
     }
-    hr {
-      color: $offWhite;
-      opacity: .5;
-      width: 70%;
-      margin: 20px auto;
+    .edit-info {
+      display: none;
     }
-    .edit {
-      text-align: right;
-      img {
-        height: 25px;
-        margin-right: 10px;
-        margin-top: 15px;
-    }
-  }
 }

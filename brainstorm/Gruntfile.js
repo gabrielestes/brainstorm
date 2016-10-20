@@ -39,6 +39,18 @@ module.exports = function(grunt) {
             }
         },
 
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['es2015']
+            },
+            dist: {
+                files: {
+                    'libdev/js/app.js': 'src/js/app.js'
+                }
+            }
+        },
+
         haml: {
             dist: {
                 files: {
@@ -60,7 +72,7 @@ module.exports = function(grunt) {
                 files: [
                     'src/js/*.js', 'test/*.js'
                 ],
-                tasks: ['mochaTest']
+                tasks: ['mochaTest', 'babel']
             },
 
             img: {
@@ -79,12 +91,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-haml2html');
     grunt.registerTask('default', [
         'sass',
         'watch',
         'imagemin',
         'mochaTest',
+        'babel',
         'haml'
     ]);
 };
