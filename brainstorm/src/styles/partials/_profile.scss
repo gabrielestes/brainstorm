@@ -7,15 +7,41 @@ body.profile {
     height: 100%;
 }
 
+@keyframes flash {
+10%,
+20%,
+40%,
+85%,
+92%,
+97%,
+99% {
+  opacity: 1;
+}
+0%,
+100%,
+81%,
+88%,
+95%,
+98% {
+  opacity: 0;
+}
+}
+
 header {
     background: $tradewind;
     height: 80px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
-    img {
+    .lightning,
+    .storm {
         height: 65px;
         margin: 7.5px 0 0 30px;
         float: left;
+    }
+
+    .lightning {
+        display: none;
+        animation: flash 3s 1s ease;
     }
 
     h1 {
@@ -27,11 +53,19 @@ header {
         float: left;
         text-shadow: 0 3.34px 2.224px $raven,0 -2px 1px #fff;
         transition: all 1.5s ease;
+    }
 
-        &:hover {
-          text-shadow: none;
-          color: $pomegranate;
-        }
+    &:hover h1 {
+        text-shadow: none;
+        color: $pomegranate;
+    }
+
+    &:hover .lightning {
+        display: block;
+    }
+
+    &:hover .storm {
+        display: none;
     }
 }
 
@@ -121,7 +155,8 @@ header {
             }
         }
     }
+
     .edit-info {
-      display: none;
+        display: none;
     }
 }
