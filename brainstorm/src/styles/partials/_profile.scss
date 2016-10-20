@@ -1,0 +1,101 @@
+html {
+    height: 100%;
+}
+body.profile {
+    background: url('../../images/arches.png');
+    height: 100%;
+}
+header {
+    background: $tradewind;
+    height: 80px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    img {
+        height: 65px;
+        margin: 7.5px 0 0 30px;
+        float: left;
+    }
+    h1 {
+        color: #f1ebe5;
+        font-size: 70px;
+        margin-left: 20px;
+        line-height: 80px;
+        font-family: $fredoka;
+        float: left;
+        text-shadow: 0 3.34px 2.224px $raven,0 -2px 1px #fff;
+    }
+}
+.profile-container {
+    width: 30%;
+    height: 400px;
+    background: $pomegranate;
+    border-radius: 10px;
+    font-family: $opensans;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+
+    .initials {
+        background: $offWhite;
+        border: 2px solid #333;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        font-size: 50px;
+        font-weight: bold;
+        height: 100px;
+        letter-spacing: 5px;
+        margin: 20px auto;
+        width: 100px;
+
+        h3 {
+            line-height: 100px;
+            text-align: center;
+        }
+    }
+
+    li {
+        margin: 10px 0 0 30px;
+        font-size: 20px;
+        &.name, &.score {
+          text-align: center;
+          margin-left: 0;
+        }
+        &.name {
+          font-size: 25px;
+        }
+        &.score {
+          font-style: italic;
+          font-size: 15px;
+        }
+        span {
+          font-size: 20px;
+        }
+        img {
+            height: 30px;
+            float: left;
+            margin-right: 15px;
+        }
+        p {
+            color: $offWhite;
+            line-height: 30px;
+            letter-spacing: 1px;
+        }
+    }
+    hr {
+      color: $offWhite;
+      opacity: .5;
+      width: 70%;
+      margin: 20px auto;
+    }
+    .edit {
+      text-align: right;
+      img {
+        height: 25px;
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+  }
+}

@@ -109,7 +109,7 @@ module.exports = function(grunt) {
             },
 
             html: {
-                files: ['index.haml'],
+                files: ['index.haml', 'profile.haml', 'game.haml', 'leaderboard.haml'],
                 tasks: ['haml']
             }
         }
