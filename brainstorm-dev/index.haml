@@ -4,9 +4,15 @@
     %meta(charset='UTF-8')
     %meta(content='width=device-width, initial-scale=1' name='viewport')
     %title Brainstorm - LogIn
+    %link( href="https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans" rel="stylesheet")
+    %link(rel="icon" type='image/png' href="images/storm_logo.png")
     %link(rel='stylesheet' href='libdev/styles/main.min.css')
   %body.index
-    .container-main
+    %header
+      %img.storm(src='images/storm_logo.png' alt='grey storm logo')
+      %img.lightning(src='images/storm_logo_white.png' alt='white storm logo')
+      %h1.logo(data-shadow='brainstorm') brainsto.rm
+    .index-container
       .new-or-returning
         %form
           %p
