@@ -74,7 +74,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'src/js/main.js': 'src/js/main.js'
+                    'lib/js/app.js': 'src/js/app.js'
                 }
             }
         },
@@ -98,7 +98,7 @@ module.exports = function(grunt) {
 
             javascript: {
                 files: [
-                    'src/js/**/*', 'test/*.js'
+                    'src/js/*.js', 'test/*.js'
                 ],
                 tasks: ['mochaTest', 'jshint', 'concat', 'uglify']
             },
