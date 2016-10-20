@@ -28,8 +28,10 @@ body.index {
 	label {
 		display: block;
 		font-size: 1.6em;
-		margin: 0 0 0.5em;
+		margin: 0 0 20px 0;
 		color: $offWhite;;
+		font-family: $opensans;
+		font-size: 25px;
 	}
 
 	input {
@@ -69,7 +71,7 @@ body.index {
 		font-size: 1.3em;
 		text-align: center;
 		position: absolute;
-		background: #2F558E;
+		background: $pomegranate;
 		padding: 7px 10px;
 		color: #fff;
 	}
@@ -102,12 +104,12 @@ body.index {
 
 	.requirement-right:after {
 		right: 100%;
-		border-right-color: #2F558E;
+		border-right-color: $pomegranate;
 	}
 
 	.requirement-left:after {
 		left: 100%;
-		border-left-color: #2F558E;
+		border-left-color: $pomegranate;
 	}
 
 	input[type="button"],
