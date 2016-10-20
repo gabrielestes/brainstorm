@@ -46,7 +46,10 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'libdev/js/app.js': 'src/js/app.js'
+                    'libdev/js/index.js': 'src/js/index.js',
+                    'libdev/js/game.js': 'src/js/game.js',
+                    'libdev/js/profile.js': 'src/js/profile.js',
+                    'libdev/js/leaderboard.js': 'src/js/leaderboard.js'
                 }
             }
         },
