@@ -1,5 +1,5 @@
 !!! 5
-%html(lang='en')
+%html.profile(lang='en')
   %head
     %meta(charset='UTF-8')
     %meta(content='width=device-width, initial-scale=1' name='viewport')
@@ -10,7 +10,7 @@
 %body.profile
   - user = {user_name: 'Lindsey Adams', high_score: '12,000', email:'linzma87@gmail.com', twitter:'@turmerictotebag', instagram:'@lindsmadams'}
   - topPlayer = {user_name: 'Somebody Else', high_score: '20,000'}
-  %header
+  %header.profile
     %img.storm(src='images/storm_logo.png' alt='grey storm logo')
     %img.lightning(src='images/storm_logo_white.png' alt='white storm logo')
     %h1.logo(data-shadow='brainstorm') brainsto.rm
@@ -43,15 +43,15 @@
       %form
         %li(data-id='twitter')
           %img(src='images/twitter_icon.png' alt='twitter icon')
-          %input #{user[:twitter]}
+          %input(placeholder='#{user[:twitter]}')
         %li.instagram(data-id='instagram')
           %img(src='images/instagram_icon.png' alt='instagram icon')
-          %input #{user[:instagram]}
+          %input(placeholder='#{user[:instagram]}')
         %li(data-id='email')
           %img(src='images/email_icon.png' alt='email icon')
-          %input #{user[:email]}
-      %div.submit
-        -# %img.edit(src='images/edit_icon.png' alt='edit icon')
+          %input(placeholder='#{user[:email]}')
+      %div.save
+        %img.save(src='images/save_icon.png' alt='save icon')
 
   %script(src='libdev/js/vendor.min.js')
-  %script(src='libdev/js/app.js')
+  %script(src='libdev/js/profile.js')
