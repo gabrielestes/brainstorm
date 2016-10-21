@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class='index' lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <title>Brainstorm - LogIn</title>
+    <link href='https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans' rel='stylesheet'>
+    <link href='images/storm_logo.png' rel='icon' type='image/png'>
+    <link href='libdev/styles/main.min.css' rel='stylesheet'>
+  </head>
+  <body class='index'>
+    <header>
+      <img alt='grey storm logo' class='storm' src='images/storm_logo.png'>
+      <img alt='white storm logo' class='lightning' src='images/storm_logo_white.png'>
+      <h1 class='logo' data-shadow='brainstorm'>brainsto.rm</h1>
+    </header>
+    <div class='index-container'>
+      <div class='new-or-returning'>
+        <form>
+          <p>
+            <label for='player-name-reg'>Please Register or Login:</label>
+            <input id='register' type='button' value='REGISTER'>
+            <input id='login' type='button' value='LOGIN'>
+          </p>
+        </form>
+      </div>
+      <div class='register'>
+        <form action='#' method='post'>
+          <p>
+            <label for='player-name-reg'>Player Name</label>
+            <input class='text-input' id='player-name-reg' name='player-name-reg' type='text'>
+            <span class='requirement-right'>Player name must have at least 5 characters</span>
+          </p>
+          <p>
+            <label for='email'>Player Email</label>
+            <span class='requirement-left'>Invalid email address</span>
+            <input class='text-input' id='email' name='email' type='email'>
+            <span class='requirement-right'>Keep going</span>
+          </p>
+          <p>
+            <label for='confirm-email'>Confirm Email</label>
+            <input class='text-input' id='confirm-email' name='confirm-email' type='email'>
+            <span class='requirement-right'>Please confirm you email address</span>
+          </p>
+          <p>
+            <input id='submit-register' type='submit' value='REGISTER'>
+          </p>
+        </form>
+      </div>
+      <div class='login'>
+        <form action='#' method='post'>
+          <p>
+            <label for='player-name-login'>Player Name</label>
+            <input id='player-name-login' name='player-name-login' type='text'>
+            <span class='requirement-right'>Enter your player name</span>
+          </p>
+          <p>
+            <input id='submit-login' type='submit' value='LOGIN'>
+          </p>
+        </form>
+      </div>
+    </div>
+    <script src='libdev/js/vendor.min.js'></script>
+    <script src='libdev/js/index.js'></script>
+  </body>
+</html>

@@ -6,13 +6,18 @@ Rails.application.routes.draw do
   # root is defaulted to login/register
   devise_scope :user do
     root to: 'users/sessions#new'
-  end
+    # root to: 'home#index'
 
+  get 'accounts/:id' => 'accounts#index'
+
+# get 'users/:id' => ''
+
+  end
   # displays new game
-  get '/game'
+  # get '/game'
 
   # displays top x scores by players
-  get '/leaderboard'
+  # get '/leaderboard'
 
   # displays user's game history and account info
   # get profile
