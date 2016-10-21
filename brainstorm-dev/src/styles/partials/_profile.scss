@@ -138,7 +138,6 @@ header {
                 margin-right: 15px;
             }
 
-            input,
             p {
                 color: $offWhite;
                 line-height: 30px;
@@ -181,13 +180,17 @@ header {
             border: 2px solid $raven;
             width: 70%;
             text-indent: 15px;
-            color: $raven;
+            color: black;
+            line-height: 26px;
+            letter-spacing: 1px;
+            font-size: 18px;
         }
 
         img.save {
             height: 25px;
             cursor: pointer;
             margin-right: 13px;
+            margin-top: 10px;
         }
     }
 }
