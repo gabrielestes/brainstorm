@@ -6,219 +6,129 @@ body.profile {
     background: url('../../images/arches.png');
     height: 100%;
 }
-@keyframes flash {
-    10%,
-    20%,
-    40%,
-    85%,
-    92%,
-    97%,
-    99% {
-        opacity: 1;
-    }
-
-    0%,
-    100%,
-    81%,
-    88%,
-    95%,
-    98% {
-        opacity: 0;
-    }
-}
-
-header {
-    background: $tradewind;
-    height: 80px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
-    .lightning,
-    .storm {
-        height: 65px;
-        margin: 7.5px 0 0 30px;
-        float: left;
-    }
-
-    .lightning {
-        display: none;
-        animation: flash 3s 1s ease;
-    }
-
-    h1 {
-        color: #f1ebe5;
-        font-size: 70px;
-        margin-left: 20px;
-        line-height: 80px;
-        font-family: $fredoka;
-        float: left;
-        text-shadow: 0 3.34px 2.224px $raven,0 -2px 1px #fff;
-        transition: all 1.5s ease;
-    }
-
-    &:hover h1 {
-        text-shadow: none;
-        color: $pomegranate;
-    }
-
-    &:hover .lightning {
-        display: block;
-    }
-
-    &:hover .storm {
-        display: none;
-    }
-
-    nav.menu {
-        width: 40%;
-        float: right;
-        height: 100%;
-
-        li {
-            float: left;
-            font-size: 22px;
-            text-align: center;
-            margin-top: 29px;
-            margin-right: 45px;
-            font-family: 'Lato', sans-serif;
-
-            &:last-child {
-              margin-right: 20px;
-            }
-
-            a {
-              text-decoration: none;
-              color: black;
-
-              &.active {
-                color: white;
-              }
-            }
-        }
-    }
-}
 
 .profile-container {
-    width: 30%;
-    height: 400px;
-    background: $pomegranate;
-    border-radius: 10px;
-    font-family: $opensans;
-    position: fixed;
-    top: 22%;
-    left: 50%;
-    transform: translateX(-50%);
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
-    transition: all 1.5s ease-in-out;
+      width: 30%;
+      height: 400px;
+      background: $pomegranate;
+      border-radius: 10px;
+      font-family: $opensans;
+      position: fixed;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+      -webkit-box-shadow: 0 8px 6px -6px black;
+      -moz-box-shadow: 0 8px 6px -6px black;
+      box-shadow: 0 8px 6px -6px black;
+      transition: all 1.5s ease-in-out;
 
-    &.active {
-        background: lightgrey;
-        color: $pomegranate;
-    }
+      &.active {
+          background: lightgrey;
+          color: $pomegranate;
+      }
 
-    .initials {
-        background: $offWhite;
-        border: 2px solid #333;
-        border-radius: 50%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        font-size: 50px;
-        font-weight: bold;
-        height: 100px;
-        letter-spacing: 5px;
-        margin: 20px auto;
-        width: 100px;
+      .initials {
+          background: $offWhite;
+          border: 2px solid #333;
+          border-radius: 50%;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          font-size: 50px;
+          font-weight: bold;
+          height: 100px;
+          letter-spacing: 5px;
+          margin: 20px auto;
+          width: 100px;
 
-        h3 {
-            line-height: 100px;
-            text-align: center;
-        }
-    }
+          h3 {
+              line-height: 100px;
+              text-align: center;
+          }
+      }
 
-    .edit-info,
-    .user-info {
-        li {
-            margin: 10px 0 0 30px;
-            font-size: 20px;
+      .edit-info,
+      .user-info {
+          li {
+              margin: 10px 0 0 30px;
+              font-size: 20px;
 
-            &.name,
-            &.score {
-                text-align: center;
-                margin-left: 0;
-            }
+              &.name,
+              &.score {
+                  text-align: center;
+                  margin-left: 0;
+              }
 
-            &.name {
-                font-size: 25px;
-            }
+              &.name {
+                  font-size: 25px;
+              }
 
-            &.score {
-                font-style: italic;
-                font-size: 15px;
-            }
+              &.score {
+                  font-style: italic;
+                  font-size: 15px;
+              }
 
-            span {
-                font-size: 20px;
-            }
+              span {
+                  font-size: 20px;
+              }
 
-            img {
-                height: 30px;
-                float: left;
-                margin-right: 15px;
-            }
+              img {
+                  height: 30px;
+                  float: left;
+                  margin-right: 15px;
+              }
 
-            p {
-                color: $offWhite;
-                line-height: 30px;
-                letter-spacing: 1px;
-            }
-        }
+              p {
+                  color: $offWhite;
+                  line-height: 30px;
+                  letter-spacing: 1px;
+              }
+          }
 
-        hr {
-            color: $offWhite;
-            opacity: 0.5;
-            width: 70%;
-            margin: 20px auto;
-        }
+          hr {
+              color: $offWhite;
+              opacity: 0.5;
+              width: 70%;
+              margin: 20px auto;
+          }
 
-        .edit,
-        .save {
-            text-align: right;
+          .edit,
+          .save {
+              text-align: right;
 
-            img.edit {
-                height: 25px;
-                margin-right: 10px;
-                margin-top: 18px;
-                cursor: pointer;
-            }
-        }
-    }
+              img.edit {
+                  height: 25px;
+                  margin-right: 10px;
+                  margin-top: 18px;
+                  cursor: pointer;
+              }
+          }
+      }
 
-    .user-info.inactive {
-        display: none;
-    }
+      .user-info.inactive {
+          display: none;
+      }
 
-    .edit-info {
-        display: none;
+      .edit-info {
+          display: none;
 
-        &.active {
-            display: block;
-        }
+          &.active {
+              display: block;
+          }
 
-        input {
-            border: 2px solid $raven;
-            width: 70%;
-            text-indent: 15px;
-            color: black;
-            line-height: 26px;
-            letter-spacing: 1px;
-            font-size: 18px;
-        }
+          input {
+              border: 2px solid $raven;
+              width: 70%;
+              text-indent: 15px;
+              color: black;
+              line-height: 26px;
+              letter-spacing: 1px;
+              font-size: 18px;
+          }
 
-        img.save {
-            height: 25px;
-            cursor: pointer;
-            margin-right: 13px;
-            margin-top: 10px;
-        }
-    }
-}
+          img.save {
+              height: 25px;
+              cursor: pointer;
+              margin-right: 13px;
+              margin-top: 10px;
+          }
+      }
+  }

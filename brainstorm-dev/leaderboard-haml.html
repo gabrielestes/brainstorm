@@ -30,6 +30,27 @@
         </li>
       </ul>
     </nav>
+    <nav class='menu-small'>
+      <h3 class='nav'>
+        <a class='menu'>Menu</a>
+      </h3>
+      <div class='drop-nav'>
+        <ul>
+          <li class='play'>
+            <a class='play' href='#'>Play</a>
+          </li>
+          <li class='leaderboard'>
+            <a class='leaderboard' href='#'>Leaderboard</a>
+          </li>
+          <li class='account'>
+            <a class='account' href='#'>Account</a>
+          </li>
+          <li class='logout'>
+            <a class='logout' href='#'>Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </header>
   <section class='leaderboard-container'>
     <div class='header'>
@@ -38,39 +59,39 @@
     </div>
     <div class='stats'>
       <ul class='players'>
-        <li class='one'>
-          <p class='rank' data-id='rank'>1</p>
+        <li class='#{index} player'>
+          <p class='rank' data-id='rank'></p>
           <p class='player-name' data-id='user-name'>Lindsey Adams</p>
           <p class='score' data-id='high-score'>
             <span>12,000</span>
           </p>
         </li>
-        <li class='two'>
-          <p class='rank' data-id='rank'>2</p>
-          <p class='player-name' data-id='user-name'>Lindsey Adams</p>
+        <li class='#{index} player'>
+          <p class='rank' data-id='rank'></p>
+          <p class='player-name' data-id='user-name'>Jason Carr</p>
           <p class='score' data-id='high-score'>
-            <span>12,000</span>
+            <span>10,000</span>
           </p>
         </li>
-        <li class='three'>
-          <p class='rank' data-id='rank'>3</p>
-          <p class='player-name' data-id='user-name'>Lindsey Adams</p>
+        <li class='#{index} player'>
+          <p class='rank' data-id='rank'></p>
+          <p class='player-name' data-id='user-name'>Gabe Estes</p>
           <p class='score' data-id='high-score'>
-            <span>12,000</span>
+            <span>9,700</span>
           </p>
         </li>
-        <li class='four'>
-          <p class='rank' data-id='rank'>4</p>
-          <p class='player-name' data-id='user-name'>Lindsey Adams</p>
+        <li class='#{index} player'>
+          <p class='rank' data-id='rank'></p>
+          <p class='player-name' data-id='user-name'>Jenn Tustin</p>
           <p class='score' data-id='high-score'>
-            <span>12,000</span>
+            <span>9,300</span>
           </p>
         </li>
-        <li class='five'>
-          <p class='rank' data-id='rank'>5</p>
-          <p class='player-name' data-id='user-name'>Lindsey Adams</p>
+        <li class='#{index} player'>
+          <p class='rank' data-id='rank'></p>
+          <p class='player-name' data-id='user-name'>Dan Yuschick</p>
           <p class='score' data-id='high-score'>
-            <span>12,000</span>
+            <span>3,200</span>
           </p>
         </li>
       </ul>
@@ -78,4 +99,4 @@
   </section>
 </body>
 <script src='libdev/js/vendor.min.js'></script>
-<script src='libdev/js/profile.js'></script>
+<script src='libdev/js/leaderboard.js'></script>

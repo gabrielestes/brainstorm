@@ -8,7 +8,7 @@
     %link(rel="icon" type='image/png' href="images/storm_logo.png")
     %link(rel="stylesheet" href="libdev/styles/main.min.css")
 %body.leaderboard
-  - user = {user_name: 'Lindsey Adams', high_score: '12,000', email:'linzma87@gmail.com', twitter:'@turmerictotebag', instagram:'@lindsmadams'}
+  - user = [{user_name: 'Lindsey Adams', high_score: '12,000'}, {user_name: 'Jason Carr', high_score: '10,000'}, {user_name: 'Gabe Estes', high_score: '9,700'}, {user_name: 'Jenn Tustin', high_score: '9,300'}, {user_name: 'Dan Yuschick', high_score: '3,200'}]
   - topPlayer = {user_name: 'Somebody Else', high_score: '20,000'}
   %header
     %img.storm(src='images/storm_logo.png' alt='grey storm logo')
@@ -24,38 +24,31 @@
           %a.account(href='#') Account
         %li.logout
           %a.logout(href='#') Logout
+    %nav.menu-small
+      %h3.nav
+        %a.menu Menu
+      %div.drop-nav
+        %ul
+          %li.play
+            %a.play(href='#') Play
+          %li.leaderboard
+            %a.leaderboard(href='#') Leaderboard
+          %li.account
+            %a.account(href='#') Account
+          %li.logout
+            %a.logout(href='#') Logout
   %section.leaderboard-container
     %div.header
       %img.award(src='images/award_icon.png' alt='award icon')
       %h3 Top Players
     %div.stats
       %ul.players
-        %li.one
-          %p.rank(data-id='rank') 1
-          %p.player-name(data-id='user-name') #{user[:user_name]}
-          %p.score(data-id='high-score')
-            %span #{user[:high_score]}
-        %li.two
-          %p.rank(data-id='rank') 2
-          %p.player-name(data-id='user-name') #{user[:user_name]}
-          %p.score(data-id='high-score')
-            %span #{user[:high_score]}
-        %li.three
-          %p.rank(data-id='rank') 3
-          %p.player-name(data-id='user-name') #{user[:user_name]}
-          %p.score(data-id='high-score')
-            %span #{user[:high_score]}
-        %li.four
-          %p.rank(data-id='rank') 4
-          %p.player-name(data-id='user-name') #{user[:user_name]}
-          %p.score(data-id='high-score')
-            %span #{user[:high_score]}
-        %li.five
-          %p.rank(data-id='rank') 5
-          %p.player-name(data-id='user-name') #{user[:user_name]}
-          %p.score(data-id='high-score')
-            %span #{user[:high_score]}
-
+        - (user).each_with_index do |user, index|
+          %li.player{:class => '#{index}'}
+            %p.rank(data-id='rank')
+            %p.player-name(data-id='user-name') #{user[:user_name]}
+            %p.score(data-id='high-score')
+              %span #{user[:high_score]}
 
 %script(src='libdev/js/vendor.min.js')
-%script(src='libdev/js/profile.js')
+%script(src='libdev/js/leaderboard.js')
