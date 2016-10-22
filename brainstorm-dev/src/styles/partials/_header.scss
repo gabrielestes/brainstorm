@@ -23,6 +23,7 @@ header {
     background: $tradewind;
     height: 80px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
 
     .lightning,
     .storm {
@@ -50,6 +51,7 @@ header {
         float: left;
         text-shadow: 0 3.34px 2.224px $raven,0 -2px 1px #fff;
         transition: all 1.5s ease;
+        z-index: 5;
 
         @include media(mobile) {
           font-size: 50px;
@@ -168,7 +170,7 @@ nav.menu-small {
 
         &.active {
             display: block;
-            z-index: 50;
+            z-index: 9999;
         }
 
         li {
