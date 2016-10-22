@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class='leaderboard' lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <title>brainsto.rm</title>
+    <link href='https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans|Lato' rel='stylesheet'>
+    <link href='images/storm_logo.png' rel='icon' type='image/png'>
+    <link href='libdev/styles/main.min.css' rel='stylesheet'>
+  </head>
+</html>
+<body class='leaderboard'>
+  <header>
+    <img alt='grey storm logo' class='storm' src='images/storm_logo.png'>
+    <img alt='white storm logo' class='lightning' src='images/storm_logo_white.png'>
+    <h1 class='logo' data-shadow='brainstorm'>brainsto.rm</h1>
+    <nav class='menu'>
+      <ul class='navbar'>
+        <li class='play'>
+          <a class='play' href='#'>Play</a>
+        </li>
+        <li class='leaderboard'>
+          <a class='leaderboard' href='#'>Leaderboard</a>
+        </li>
+        <li class='account'>
+          <a class='account' href='#'>Account</a>
+        </li>
+        <li class='logout'>
+          <a class='logout' href='#'>Logout</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class='menu-small'>
+      <h3 class='nav'>
+        <a class='menu'>Menu</a>
+      </h3>
+      <div class='drop-nav'>
+        <ul>
+          <li class='play'>
+            <a class='play' href='#'>Play</a>
+          </li>
+          <li class='leaderboard'>
+            <a class='leaderboard' href='#'>Leaderboard</a>
+          </li>
+          <li class='account'>
+            <a class='account' href='#'>Account</a>
+          </li>
+          <li class='logout'>
+            <a class='logout' href='#'>Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <section class='leaderboard-container'>
+    <div class='header'>
+      <img alt='award icon' class='award' src='images/award_icon.png'>
+      <h3>Top Players</h3>
+    </div>
+    <div class='stats'>
+      <ul class='players'>
+        <li class='#{index} player'>
+          <p class='rank' data-id='rank'></p>
+          <p class='player-name' data-id='user-name'>Lindsey Adams</p>
+          <p class='score' data-id='high-score'>
+            <span>12,000</span>
+          </p>
+        </li>
+        <li class='#{index} player'>
+          <p class='rank' data-id='rank'></p>
+          <p class='player-name' data-id='user-name'>Jason Carr</p>
+          <p class='score' data-id='high-score'>
+            <span>10,000</span>
+          </p>
+        </li>
+        <li class='#{index} player'>
+          <p class='rank' data-id='rank'></p>
+          <p class='player-name' data-id='user-name'>Gabe Estes</p>
+          <p class='score' data-id='high-score'>
+            <span>9,700</span>
+          </p>
+        </li>
+        <li class='#{index} player'>
+          <p class='rank' data-id='rank'></p>
+          <p class='player-name' data-id='user-name'>Jenn Tustin</p>
+          <p class='score' data-id='high-score'>
+            <span>9,300</span>
+          </p>
+        </li>
+        <li class='#{index} player'>
+          <p class='rank' data-id='rank'></p>
+          <p class='player-name' data-id='user-name'>Dan Yuschick</p>
+          <p class='score' data-id='high-score'>
+            <span>3,200</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+</body>
+<script src='libdev/js/vendor.min.js'></script>
+<script src='libdev/js/leaderboard.js'></script>
