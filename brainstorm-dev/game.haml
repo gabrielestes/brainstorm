@@ -8,15 +8,16 @@
     %link(rel="icon" type='image/png' href="images/storm_logo.png")
     %link(rel='stylesheet' href='libdev/styles/main.min.css')
   %body.game
-    %audio.music(style="display: none" autoplay loop)
-      %source(src="embedded music/01 Heartbeats [DVD].mp3" type="audio/mpeg")
+    %audio.music(style="display: none" loop)
+      %source.song(style="display:none" src="embedded music/01 Heartbeats [DVD].mp3" type="audio/mpeg")
     %header.profile
       %img.storm(src='images/storm_logo.png' alt='grey storm logo')
       %img.lightning(src='images/storm_logo_white.png' alt='white storm logo')
       %h1.logo(data-shadow='brainstorm') brainsto.rm
     %input.mute-button(type="button" value="Mute")
-    .game-container
-      %input.start-game(type="button" value="Start Game")
-      %input.solution-field(type="number" placeholder="=")
+    %input.start-game(type="button" value="Start Game")
+    .game-container.active
+      %form
+        %input.solution-field(id="solution-field" type="text" placeholder="=")
     %script(src="libdev/js/vendor.min.js")
     %script(src="libdev/js/game.js")
