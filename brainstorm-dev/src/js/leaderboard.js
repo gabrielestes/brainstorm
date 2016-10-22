@@ -10,6 +10,15 @@ $('header').on('click', 'a.menu', function() {
   $('.drop-nav').toggleClass('active');
 });
 
+$('h1.logo').hover(
+  function() {
+  $('.lightning').css('display', 'block');
+  $('.storm').css('display', 'none');
+}, function() {
+  $('.lightning').css('display', 'none');
+  $('.storm').css('display', 'block');
+});
+
 function getRank() {
   $('li.player:nth-child(1)').children('p.rank').text('1');
   $('li.player:nth-child(2)').children('p.rank').text('2');
