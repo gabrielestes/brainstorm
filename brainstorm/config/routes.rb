@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: 'accounts#index'
 
+  post '/' => 'accounts#create'
+
   get '/accounts/:id' => 'accounts#show'
-  # get 'accounts/:id' => 'accounts#index'
+
 
   end
   # displays new game

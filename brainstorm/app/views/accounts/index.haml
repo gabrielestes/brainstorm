@@ -10,27 +10,30 @@
         %input(id="register" type="button" value="REGISTER")
         %input(id="login" type="button" value="LOGIN")
   .register
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       %p
         %label(for="player-name-reg") Player Name
-        = f.email_field :email, autofocus: true, class: "text-input"
-        %input(class="text-input" id="player-name-reg" name="player-name-reg" type="text")
+        = f.text_field :name, autofocus: true, class: "text-input", id: "player-name-reg", name: "player-name-reg", type: "text"
+        -# %input(class="text-input" id="player-name-reg" name="player-name-reg" type="text")
         %span.requirement-right Player name must have at least 5 characters
       %p
         %label(for="email") Player Email
         %span.requirement-left Invalid email address
-        %input(class="text-input" id="email" name="email" type="email")
+        = f.email_field :email, class: "text-input", id:"email", type:"text"
+        -# %input(class="text-input" id="email" name="email" type="email")
         -# <%= f.email_field :email, autofocus: true %>
-
         %span.requirement-right Keep going
       %p
         %label(for="confirm-email") Confirm Email
-        %input(class="text-input" id="confirm-email" name="confirm-email" type="email")
+        = f.email_field :email, class: "text-input", id:"confirm-email", name: "confirm-email", type: "email"
+        -# %input(class="text-input" id="confirm-email" name="confirm-email" type="email")
         %span.requirement-right Please confirm you email address
       %p
-        %input(id="submit-register" type="submit" value="REGISTER")
+        = f.submit 'Register', id:"submit-register", type: "submit", value: "REGISTER"
+        -# %input(id="submit-register" type="submit" value="REGISTER")
   .login
     %form(action="#" method="post")
+    form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       %p
         %label(for="player-name-login") Player Name
         %input(id="player-name-login" name="player-name-login" type="text")
