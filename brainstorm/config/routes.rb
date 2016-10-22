@@ -2,15 +2,14 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         sessions: 'users/sessions'
       }
+  resources :users
 
   # root is defaulted to login/register
   devise_scope :user do
     root to: 'accounts#index'
 
-  get '/mom' => 'accounts#mom'
+  get '/accounts/:id' => 'accounts#show'
   # get 'accounts/:id' => 'accounts#index'
-
-# get 'users/:id' => ''
 
   end
   # displays new game
