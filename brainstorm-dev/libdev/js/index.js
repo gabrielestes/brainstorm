@@ -1,5 +1,11 @@
 'use strict';
 
+//NAV BAR HIGHLIGHTING
+$('header').on('click', 'a', function () {
+    $('a').removeClass('active');
+    $(this).addClass('active');
+});
+
 //HIDE STUFF
 $('form span').hide();
 // $('.register').hide();

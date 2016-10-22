@@ -6,7 +6,11 @@ $('.profile-container').on('click', 'img.edit', function () {
 });
 $('.profile-container').on('click', 'img.save', function () {
     $('form').submit();
-    $('.edit-info').removeClass('active');
+    $('.edit-info, .profile-container').removeClass('active');
     $('.user-info').removeClass('inactive');
+});
+$('header').on('click', 'a', function () {
+    $('a').removeClass('active');
+    $(this).addClass('active');
 });
 //# sourceMappingURL=profile.js.map

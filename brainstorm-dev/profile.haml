@@ -4,16 +4,26 @@
     %meta(charset='UTF-8')
     %meta(content='width=device-width, initial-scale=1' name='viewport')
     %title brainsto.rm
-    %link( href="https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans" rel="stylesheet")
+    %link( href="https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans|Lato" rel="stylesheet")
     %link(rel="icon" type='image/png' href="images/storm_logo.png")
     %link(rel="stylesheet" href="libdev/styles/main.min.css")
 %body.profile
   - user = {user_name: 'Lindsey Adams', high_score: '12,000', email:'linzma87@gmail.com', twitter:'@turmerictotebag', instagram:'@lindsmadams'}
   - topPlayer = {user_name: 'Somebody Else', high_score: '20,000'}
-  %header.profile
+  %header
     %img.storm(src='images/storm_logo.png' alt='grey storm logo')
     %img.lightning(src='images/storm_logo_white.png' alt='white storm logo')
     %h1.logo(data-shadow='brainstorm') brainsto.rm
+    %nav.menu
+      %ul.navbar
+        %li.play
+          %a.play(href='#') Play
+        %li.leaderboard
+          %a.leaderboard(href='#') Leaderboard
+        %li.account
+          %a.account(href='#') Account
+        %li.logout
+          %a.logout(href='#') Logout
   %section.profile-container
     %div.initials
       %h3 LA

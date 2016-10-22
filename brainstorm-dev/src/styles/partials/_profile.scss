@@ -67,6 +67,34 @@ header {
     &:hover .storm {
         display: none;
     }
+
+    nav.menu {
+        width: 40%;
+        float: right;
+        height: 100%;
+
+        li {
+            float: left;
+            font-size: 22px;
+            text-align: center;
+            margin-top: 29px;
+            margin-right: 45px;
+            font-family: 'Lato', sans-serif;
+
+            &:last-child {
+              margin-right: 20px;
+            }
+
+            a {
+              text-decoration: none;
+              color: black;
+
+              &.active {
+                color: white;
+              }
+            }
+        }
+    }
 }
 
 .profile-container {
@@ -85,8 +113,8 @@ header {
     transition: all 1.5s ease-in-out;
 
     &.active {
-      background: lightgrey ;
-      color: $pomegranate;
+        background: lightgrey;
+        color: $pomegranate;
     }
 
     .initials {
