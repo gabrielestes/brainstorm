@@ -29,11 +29,22 @@
         -# %input(class="text-input" id="confirm-email" name="confirm-email" type="email")
         %span.requirement-right Please confirm you email address
       %p
+        %label(for="password") Password
+        %span.requirement-left Enter a password with at least one capital letter (A-Z), one lowercase letter (a-z) and one number (0-9).
+        = f.password_field :password, class: "text-input", id: "password", name: "password", type: "password"
+        -# %input(class="text-input" id="password" name="password" type="password")
+        %span.requirement-right Enter a password longer than 6 characters
+      %p
+        %label(for="confirm-password") Confirm Password
+        %input(class="text-input" id="confirm-password" name="confirm-password" type="password")
+        %span.requirement-left Please confirm your password
+      %p
+        %input(id="submit-register" type="submit" value="REGISTER")
         = f.submit 'Register', id:"submit-register", type: "submit", value: "REGISTER"
         -# %input(id="submit-register" type="submit" value="REGISTER")
   .login
-    %form(action="#" method="post")
-    form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    -# %form(action="#" method="post")
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       %p
         %label(for="player-name-login") Player Name
         %input(id="player-name-login" name="player-name-login" type="text")

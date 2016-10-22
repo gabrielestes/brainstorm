@@ -1,112 +1,143 @@
 $( document ).ready(function() {
-//HIDE STUFF
-$('form span').hide();
-// $('.register').hide();
-// $('.login').hide();
+  //HIDE STUFF
+  $('form span').hide();
+  // $('.register').hide();
+  // $('.login').hide();
 
-//LANDING PAGE
-$('#register').on('click', function() {
-    $('.new-or-returning').hide();
-    $('.register').show();
-});
+  //LANDING PAGE
+  $('#register').on('click', function() {
+      $('.new-or-returning').hide();
+      $('.register').show();
+  });
 
-$('#login').on('click', function() {
-    $('.new-or-returning').hide();
-    $('.login').show();
-});
+  $('#login').on('click', function() {
+      $('.new-or-returning').hide();
+      $('.login').show();
+  });
 
-//PLAYER NAME ENTRY
-function checkPlayerName() {
-  return $('#player-name-reg').val().length > 5;
-}
+  //PLAYER NAME ENTRY
+  function checkPlayerName() {
+      return $('#player-name-reg').val().length >= 5;
+  }
 
-function playerNameEvent() {
-    if (checkPlayerName()) {
-        $('#player-name-reg').next().hide();
-    } else {
-        $('#player-name-reg').next().show();
-    }
-}
+  function playerNameEvent() {
+      if (checkPlayerName()) {
+          $('#player-name-reg').next().hide();
+      } else {
+          $('#player-name-reg').next().show();
+      }
+  }
 
-//EMAIL ENTRY
-function checkEmailValid() {
-    var emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var validated = true;
-    if (!emailRegEx.test($('#email').val()))
-        validated = false;
-    console.log(validated);
-    return validated;
-}
+  //EMAIL ENTRY
+  function checkEmailValid() {
+      var emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var validated = true;
+      if (!emailRegEx.test($('#email').val()))
+          validated = false;
+      console.log(validated);
+      return validated;
+  }
 
-function emailEvent() {
-    if (checkEmailValid()) {
-        $('#email').prev().hide();
-    } else {
-        $('#email').prev().show();
-    }
-}
+  function emailEvent() {
+      if (checkEmailValid()) {
+          $('#email').prev().hide();
+      } else {
+          $('#email').prev().show();
+      }
+  }
 
-//EMAIL CONFIRMATION
-function checkEmailsMatch() {
-    return $('#email').val() === $('#confirm-email').val();
-}
+  //PASSWORD ENTRY
+  function checkPasswordLength() {
+      var validated = true;
+      if ($('#password').val().length < 7)
+          validated = false;
+          console.log(validated);
+      return validated;
+  }
 
-function confirmEmail() {
-    if (checkEmailsMatch()) {
-        $('#confirm-email').next().hide();
-    } else {
-        $('#confirm-email').next().show();
-    }
-}
+  function checkPasswordValid() {
+      var validated = true;
+      if (!/\d/.test($('#password').val()))
+          validated = false;
+      if (!/[a-z]/.test($('#password').val()))
+          validated = false;
+      if (!/[A-Z]/.test($('#password').val()))
+          validated = false;
+      if (/[^0-9a-zA-Z]/.test($('#password').val()))
+          validated = false;
+      return validated;
+  }
 
-//READY TO SUBMIT
-function canSubmit() {
-    return checkPlayerName() && checkEmailValid() && checkEmailsMatch();
-}
+  function passwordEvent() {
+      if (checkPasswordLength()) {
+          $('#password').next().hide();
+      } else {
+          $('#password').next().show();
+      }
+      if (checkPasswordValid()) {
+          $('#password').prev().hide();
+      } else {
+          $('#password').prev().show();
+      }
+  }
 
-function enableSubmit() {
-    $("#submit").prop("disabled", !canSubmit());
-}
+  //CONFIRM PASSWORD
+  function checkPasswordsMatch() {
+      return $('#password').val() === $('#confirm-password').val();
+  }
 
-//EVENT HANDLERS
-$('body').on('keydown', 'input', function(event) {
-    var form = $(this).parents('form:eq(0)'),
-        focusable = $('form').find('.text-input').filter(':visible'),
-        next = focusable.eq(focusable.index(this) + 1);
-    if (event.keyCode == 13) {
-        event.preventDefault();
-        if (next.length) {
-            next.focus();
-        } else {
-            if (!canSubmit()) {
-                console.log("here");
-                next = focusable.eq(0);
-                next.focus();
-            } else {
-                form.submit();
-            }
-        }
-        return false;
-    }
-});
+  function confirmPassword() {
+      if (checkPasswordsMatch()) {
+          $('#confirm-password').next().hide();
+      } else {
+          $('#confirm-password').next().show();
+      }
+  }
 
-//REGISTER FIELDS
-//Player name input
-$('#player-name-reg').focus(playerNameEvent)
-    .keyup(playerNameEvent)
-    .keyup(enableSubmit);
+  //READY TO SUBMIT
+  function canSubmit() {
+      return checkPlayerName() && checkEmailValid() && checkPasswordLength() && checkPasswordValid() && checkPasswordsMatch();
+  }
 
-//Email input
-$('#email').focus(emailEvent)
-    .keyup(emailEvent)
-    .keyup(confirmEmail)
-    .keyup(enableSubmit);
+  function enableSubmit() {
+      $("#submit").prop("disabled", !canSubmit());
+  }
 
-//Confirm email input
-$('#confirm-email').focus(confirmEmail)
-    .keyup(confirmEmail)
-    .keyup(enableSubmit);
+  //EVENT HANDLERS
+  $('body').on('keydown', 'input', function(event) {
+      var form = $(this).parents('form:eq(0)'),
+          focusable = $('form').find('.text-input').filter(':visible'),
+          next = focusable.eq(focusable.index(this) + 1);
+      if (event.keyCode == 13) {
+          event.preventDefault();
+          if (next.length) {
+              next.focus();
+          } else {
+              if (!canSubmit()) {
+                  console.log("here");
+                  next = focusable.eq(0);
+                  next.focus();
+              } else {
+                  form.submit();
+              }
+          }
+          return false;
+      }
+  });
 
-//LOGIN FIELD
-enableSubmit();
+  //REGISTER FIELDS
+  //Player name input
+  $('#player-name-reg').focus(playerNameEvent).keyup(playerNameEvent).keyup(enableSubmit);
+
+  //Email input
+  $('#email').focus(emailEvent).keyup(emailEvent).keyup(enableSubmit);
+
+  $('#password').focus(passwordEvent).keyup(passwordEvent).keyup(confirmPassword).keyup(enableSubmit);
+
+  //Password confirmation input
+  $('#confirm-password').focus(confirmPassword).keyup(confirmPassword).keyup(enableSubmit);
+
+
+
+  enableSubmit();
 });
