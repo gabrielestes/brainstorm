@@ -11,15 +11,13 @@ body.leaderboard {
     width: 50%;
     background: $raven;
     margin: 0 auto;
-    position: fixed;
-    top: 22%;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 50px;
     border-radius: 10px;
     -webkit-box-shadow: 0 8px 6px -6px black;
     -moz-box-shadow: 0 8px 6px -6px black;
     box-shadow: 0 8px 6px -6px black;
     transition: all 1.5s ease-in-out;
+    z-index: 1;
 
     @include media(tablet) {
       width: 60%;

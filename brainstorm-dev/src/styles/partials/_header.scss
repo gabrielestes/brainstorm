@@ -56,7 +56,7 @@ header {
         }
 
         @include media(mobile2) {
-          font-size: 40px;
+          font-size: 35px;
           margin-left: 10px;
         }
     }
@@ -121,13 +121,27 @@ nav.menu-small {
     display: none;
     transition: all 1.5s ease;
 
+    @include media(tablet) {
+      width: 20%;
+    }
+
     @include media(mobile) {
       width: 25%;
     }
+
+    @include media(mobile2) {
+      width: 35%;
+    }
+
     h3 {
         line-height: 80px;
         font-family: 'Lato', sans-serif;
         font-size: 28px;
+
+        @include media(mobile2) {
+          font-size: 22px;
+          text-indent: 45px;
+        }
 
         a {
             cursor: pointer;
@@ -148,6 +162,9 @@ nav.menu-small {
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         transition: background 1.5s ease;
+        -webkit-box-shadow: 0 8px 6px -6px black;
+        -moz-box-shadow: 0 8px 6px -6px black;
+        box-shadow: 0 8px 6px -6px black;
 
         &.active {
             display: block;
