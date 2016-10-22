@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get '/accounts/:id' => 'accounts#show'
 
+  get '/leaderboard' => 'games#show'
 
   end
   # displays new game
