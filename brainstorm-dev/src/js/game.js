@@ -1,23 +1,72 @@
 $(document).ready(function() {
+    //GLOBAL VARIABLES
     var allRaindrops = [];
     var interval = 3000;
     var gameDuration = null;
+
     //Mute button functionality
     $('.mute-button').on('click', function() {
+        $(this).toggleClass('active');
         $('.music').prop('muted', !$('.music').prop('muted'));
     });
+
     //Start Game button
     $('.start-game').on('click', function() {
+        $('.start-game').hide();
+        makeItRain();
+    });
+
+    //Solution-field
+    $('form').on('keypress', '.solution-field', function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            var userSolution = $(this).val();
+            checkAnswers(userSolution);
+            $(this).val('');
+        }
+    });
+
+    //Game FUNCTIONS
+    function makeItRain() {
+        setFocus();
+        hideCursor();
         new Raindrop();
         startGame();
         increaseSpeed();
-        $('.start-game').hide();
-    });
+    }
+
+    // function playMusic() {
+    //   $('.music').on("load", function() {
+    //        $('.music').play();
+    //    }, true);
+    //    $('.start').click(function() {
+    //        $('.music').play();
+    //    });
+    // }
+
+    function hideCursor() {
+        $('html').css({
+            cursor: 'none'
+        });
+        setTimeout(function() {
+
+            $('.game-container').mousemove(function() {
+                $('html').css({
+                    cursor: 'auto'
+                });
+            });
+        }, 300);
+
+    }
+
+    function setFocus() {
+        var input = $('.solution-field');
+        input.focus();
+    }
 
     function startGame() {
         gameDuration = setInterval(function() {
             new Raindrop();
-            console.log(interval);
         }, interval);
     }
 
@@ -29,13 +78,27 @@ $(document).ready(function() {
 
     function increaseSpeed() {
         setInterval(function() {
-          clearInterval(gameDuration);
+            clearInterval(gameDuration);
             interval -= 250;
             startGame();
             return interval;
         }, 15000);
     }
 
+    function checkAnswers(userSolution) {
+      var numSolution = Number(userSolution);
+      userSolution = null;
+      allRaindrops.filter(function(drop) {
+        console.log();
+        console.log(numSolution);
+          if (drop.values.solution === numSolution) {
+            drop.self.remove();
+          }
+      });
+      numSolution = null;
+    }
+
+    //CONTRUCTORS
     function Raindrop() {
         this.values = {
             firstNumber: null,
@@ -52,6 +115,7 @@ $(document).ready(function() {
         this.init();
     }
 
+    //PROTOTYPES
     Raindrop.prototype = {
         generateOperator: function() {
             var operator = "";
@@ -129,12 +193,17 @@ $(document).ready(function() {
                     'left': posLeft + '%',
                 }).text(this.values.firstNumber + this.values.operator + this.values.secondNumber)
             );
-            // this.makeItRain();
+            this.rainFall(this.setRainSpeed());
             return $('.raindrop').first();
-        }
+        },
 
-        // makeItRain: function() {
-        //   setTimeout('new Raindrop()', 3000);
-        // }
+        setRainSpeed: function() {
+
+        },
+
+        rainFall: function(rainSpeed) {
+
+        }
     };
+
 });
