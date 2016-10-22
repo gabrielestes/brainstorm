@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class='game'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <title>Brainstorm - Game</title>
+    <link href='https://fonts.googleapis.com/css?family=Fredoka+One%7COpen+Sans' rel='stylesheet'>
+    <link href='images/storm_logo.png' rel='icon' type='image/png'>
+    <link href='libdev/styles/main.min.css' rel='stylesheet'>
+  </head>
+  <body class='game'>
+    <audio class='music' loop style='display: none'>
+      <source class='song' src='embedded music/01 Heartbeats [DVD].mp3' style='display:none' type='audio/mpeg'>
+    </audio>
+    <header class='profile'>
+      <img alt='grey storm logo' class='storm' src='images/storm_logo.png'>
+      <img alt='white storm logo' class='lightning' src='images/storm_logo_white.png'>
+      <h1 class='logo' data-shadow='brainstorm'>brainsto.rm</h1>
+    </header>
+    <input class='mute-button' type='button' value='Mute'>
+    <input class='start-game' type='button' value='Start Game'>
+    <div class='game-container active'>
+      <form>
+        <input class='solution-field' id='solution-field' placeholder='=' type='text'>
+      </form>
+    </div>
+    <script src='libdev/js/vendor.min.js'></script>
+    <script src='libdev/js/game.js'></script>
+  </body>
+</html>
