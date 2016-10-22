@@ -7,23 +7,6 @@ body.leaderboard {
     height: 100%;
 }
 
-@keyframes bounce {
-	0%, 20%, 60%, 100% {
-		-webkit-transform: translateY(0);
-		transform: translateY(0);
-	}
-
-	40% {
-		-webkit-transform: translateY(-20px);
-		transform: translateY(-20px);
-	}
-
-	80% {
-		-webkit-transform: translateY(-10px);
-		transform: translateY(-10px);
-	}
-}
-
 .leaderboard-container {
     width: 50%;
     background: $raven;
@@ -62,30 +45,28 @@ body.leaderboard {
     ul.players {
         li {
             height: 50px;
-            background: green;
             font-family: $opensans;
 
             &:nth-child(1) {
-              background: #f88e81;
-              animation: bounce 1s;
+                background: #f88e81;
             }
 
             &:nth-child(2) {
-              background: #f77c6c;
+                background: #f77c6c;
             }
 
             &:nth-child(3) {
-              background: #f66957;
+                background: #f66957;
             }
 
             &:nth-child(4) {
-              background: #f55642;
+                background: #f55642;
             }
 
             &:nth-child(5) {
-              background: #F4442E;
-              border-bottom-left-radius: 10px;
-              border-bottom-right-radius: 10px;
+                background: #F4442E;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
             }
         }
 
@@ -114,5 +95,21 @@ body.leaderboard {
                 text-align: right;
             }
         }
+    }
+}
+// hover effect for player stats
+ul.players {
+    li {
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    }
+
+    li:hover {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+        -webkit-box-shadow: 0 8px 6px -6px black;
+        -moz-box-shadow: 0 8px 6px -6px black;
+        box-shadow: 0 8px 6px -6px black;
     }
 }
