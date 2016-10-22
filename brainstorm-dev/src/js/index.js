@@ -16,7 +16,7 @@ $('#login').on('click', function() {
 
 //PLAYER NAME ENTRY
 function checkPlayerName() {
-    return $('#player-name-reg').val().length > 5;
+    return $('#player-name-reg').val().length >= 5;
 }
 
 function playerNameEvent() {
@@ -45,22 +45,57 @@ function emailEvent() {
     }
 }
 
-//EMAIL CONFIRMATION
-function checkEmailsMatch() {
-    return $('#email').val() === $('#confirm-email').val();
+//PASSWORD ENTRY
+function checkPasswordLength() {
+    var validated = true;
+    if ($('#password').val().length < 7)
+        validated = false;
+        console.log(validated);
+    return validated;
 }
 
-function confirmEmail() {
-    if (checkEmailsMatch()) {
-        $('#confirm-email').next().hide();
+function checkPasswordValid() {
+    var validated = true;
+    if (!/\d/.test($('#password').val()))
+        validated = false;
+    if (!/[a-z]/.test($('#password').val()))
+        validated = false;
+    if (!/[A-Z]/.test($('#password').val()))
+        validated = false;
+    if (/[^0-9a-zA-Z]/.test($('#password').val()))
+        validated = false;
+    return validated;
+}
+
+function passwordEvent() {
+    if (checkPasswordLength()) {
+        $('#password').next().hide();
     } else {
-        $('#confirm-email').next().show();
+        $('#password').next().show();
+    }
+    if (checkPasswordValid()) {
+        $('#password').prev().hide();
+    } else {
+        $('#password').prev().show();
+    }
+}
+
+//CONFIRM PASSWORD
+function checkPasswordsMatch() {
+    return $('#password').val() === $('#confirm-password').val();
+}
+
+function confirmPassword() {
+    if (checkPasswordsMatch()) {
+        $('#confirm-password').next().hide();
+    } else {
+        $('#confirm-password').next().show();
     }
 }
 
 //READY TO SUBMIT
 function canSubmit() {
-    return checkPlayerName() && checkEmailValid() && checkEmailsMatch();
+    return checkPlayerName() && checkEmailValid() && checkPasswordLength() && checkPasswordValid() && checkPasswordsMatch();
 }
 
 function enableSubmit() {
@@ -91,20 +126,16 @@ $('body').on('keydown', 'input', function(event) {
 
 //REGISTER FIELDS
 //Player name input
-$('#player-name-reg').focus(playerNameEvent)
-    .keyup(playerNameEvent)
-    .keyup(enableSubmit);
+$('#player-name-reg').focus(playerNameEvent).keyup(playerNameEvent).keyup(enableSubmit);
 
 //Email input
-$('#email').focus(emailEvent)
-    .keyup(emailEvent)
-    .keyup(confirmEmail)
-    .keyup(enableSubmit);
+$('#email').focus(emailEvent).keyup(emailEvent).keyup(enableSubmit);
 
-//Confirm email input
-$('#confirm-email').focus(confirmEmail)
-    .keyup(confirmEmail)
-    .keyup(enableSubmit);
+$('#password').focus(passwordEvent).keyup(passwordEvent).keyup(confirmPassword).keyup(enableSubmit);
 
-//LOGIN FIELD
+//Password confirmation input
+$('#confirm-password').focus(confirmPassword).keyup(confirmPassword).keyup(enableSubmit);
+
+
+
 enableSubmit();

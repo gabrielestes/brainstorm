@@ -90,9 +90,10 @@ $(document).ready(function () {
         var numSolution = Number(userSolution);
         userSolution = null;
         allRaindrops.filter(function (drop) {
-            console.log();
+            console.log(drop.values);
             console.log(numSolution);
             if (drop.values.solution === numSolution) {
+
                 drop.self.remove();
             }
         });
