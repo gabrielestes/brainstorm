@@ -1,0 +1,79 @@
+body {
+    background-color: #C8D5B9;
+}
+
+.mute-button {
+    float: left;
+    height: 40px;
+    width: 60px;
+    background-color: #FAF3DD;
+    position: absolute;
+    top: 20%;
+    left: 4%;
+    border-radius: 10px;
+    border: 3px solid #717C89;
+    font-size: 1em;
+
+    &:active {
+      background-color: #F4442E;
+    }
+}
+
+.start-game {
+  background-color: #FAF3DD;
+  position: absolute;
+  border-radius: 10px;
+  height: 120px;
+  width: 275px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  color: #F4442E;
+}
+
+.game-container {
+    width: 75%;
+    height: 100vh;
+    margin: 5px 12.5%;
+    background-color: #68B0AB;
+    border: black 3px solid;
+    border-radius: 15px;
+    overflow: hidden;
+
+    &active {
+      opacity: .1;
+    }
+    .raindrop {
+        font: {
+            size: 1.5em;
+        }
+        text-align: center;
+        line-height: 6em;
+        color: blue;
+        position: relative;
+        top: 0;
+        float: left;
+        background-image: url('http://i.stack.imgur.com/3dFQ5.png');
+        background-size: cover;
+        padding-bottom: 6px;
+        height: 100px;
+        width: 75px;
+    }
+
+    form {
+      top: 90%;
+      left: 45.5%;
+      position: relative;
+      float: left;
+
+    .solution-field {
+      color: #F4442E;
+        text-align: center;
+        font-size: 3.5em;
+        width: 100px;
+        z-index: 5;
+    }
+  }
+
+}
