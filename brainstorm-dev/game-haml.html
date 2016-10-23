@@ -12,29 +12,75 @@
     <audio class='music' loop style='display: none'>
       <source class='song' src='embedded music/01 Heartbeats [DVD].mp3' style='display:none' type='audio/mpeg'>
     </audio>
-    <header class='profile'>
+    <header>
       <img alt='grey storm logo' class='storm' src='images/storm_logo.png'>
       <img alt='white storm logo' class='lightning' src='images/storm_logo_white.png'>
       <h1 class='logo' data-shadow='brainstorm'>brainsto.rm</h1>
+      <nav class='menu'>
+        <ul class='navbar'>
+          <li class='play'>
+            <a class='play' href='#'>Play</a>
+          </li>
+          <li class='leaderboard'>
+            <a class='leaderboard' href='#'>Leaderboard</a>
+          </li>
+          <li class='account'>
+            <a class='account' href='#'>Account</a>
+          </li>
+          <li class='logout'>
+            <a class='logout' href='#'>Logout</a>
+          </li>
+        </ul>
+      </nav>
+      <nav class='menu-small'>
+        <h3 class='nav'>
+          <a class='menu'>Menu</a>
+        </h3>
+        <div class='drop-nav'>
+          <ul>
+            <li class='play'>
+              <a class='play' href='#'>Play</a>
+            </li>
+            <li class='leaderboard'>
+              <a class='leaderboard' href='#'>Leaderboard</a>
+            </li>
+            <li class='account'>
+              <a class='account' href='#'>Account</a>
+            </li>
+            <li class='logout'>
+              <a class='logout' href='#'>Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
     <input class='mute-button' type='button' value='Mute'>
     <input class='start-game' type='button' value='Start Game'>
-    <div class='game-container active'>
+    <div class='game-container'>
+      <div class='scores-container'>
+        <ul>
+          <li class='solution-score'>+100</li>
+          <li class='current-score'>SCORE: <br> 0</li>
+          <li class='personal-best'>PERSONAL BEST: <br> 0</li>
+          <li class='high-score'>HIGH SCORE: <br> 0</li>
+        </ul>
+      </div>
+      <img alt='cloud image' class='cloudOne' src='images/clouds_3.png'>
+      <img alt='cloud image' class='cloudTwo' src='images/clouds_4.png'>
+      <img alt='cloud image' class='cloudThree' src='images/clouds_5.png'>
+      <img alt='cloud image' class='cloudFour' src='images/clouds_6.png'>
+      <img alt='cloud image' class='cloudFive' src='images/clouds_5.png'>
+      <img alt='cloud image' class='cloudSix' src='images/clouds_4.png'>
       <form class='solution'>
-        <input class='solution-field' id='solution-field' placeholder='=' type='text'>
+        <input autocomplete='off' class='solution-field' id='solution-field' placeholder='=' type='text'>
       </form>
       <form class='score-submission'>
         <input class='score-to-send' readonly='readonly' type='text'>
         <input class='user-id' readonly='readonly' type='text'>
       </form>
-    </div>
-    <div class='scores-container'>
-      <ul>
-        <li class='solution-score'>+100</li>
-        <li class='current-score'>SCORE: 0</li>
-        <li class='personal-best'>PERSONAL BEST: 0</li>
-      </ul>
-      <div class='high-score'>HIGH SCORE: 0</div>
+      <div class='grass-container'>
+        <img class='grass' src='images/grass.png'>
+      </div>
     </div>
     <script src='libdev/js/vendor.min.js'></script>
     <script src='libdev/js/game.js'></script>
