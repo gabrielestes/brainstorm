@@ -7,7 +7,21 @@ $('.profile-container').on('click', 'img.save', function() {
     $('.edit-info, .profile-container').removeClass('active');
     $('.user-info').removeClass('inactive');
 });
-$('header').on('click', 'a', function() {
+$('nav.menu').on('click', 'a', function() {
   $('a').removeClass('active');
   $(this).addClass('active');
+});
+
+$('header').on('click', 'a.menu', function() {
+  $(this).toggleClass('active');
+  $('.drop-nav').toggleClass('active');
+});
+
+$('h1.logo').hover(
+  function() {
+  $('.lightning').css('display', 'block');
+  $('.storm').css('display', 'none');
+}, function() {
+  $('.lightning').css('display', 'none');
+  $('.storm').css('display', 'block');
 });
