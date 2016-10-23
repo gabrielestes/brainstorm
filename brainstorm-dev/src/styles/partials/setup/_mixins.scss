@@ -29,4 +29,10 @@
             @content;
         }
     }
+
+    @if $bp == mobile3 {
+         @media only screen and (max-width: 450px){
+            @content;
+        }
+    }
 }

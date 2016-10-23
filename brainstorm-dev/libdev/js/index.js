@@ -1,19 +1,20 @@
+'use strict';
+
 // NAV & HEADER EVENT HANDLERS
-$('nav.menu').on('click', 'a', function() {
-  $('a').removeClass('active');
-  $(this).addClass('active');
+$('nav.menu').on('click', 'a', function () {
+    $('a').removeClass('active');
+    $(this).addClass('active');
 });
-$('header').on('click', 'a.menu', function() {
-  $(this).toggleClass('active');
-  $('.drop-nav').toggleClass('active');
+$('header').on('click', 'a.menu', function () {
+    $(this).toggleClass('active');
+    $('.drop-nav').toggleClass('active');
 });
-$('h1.logo').hover(
-  function() {
-  $('.lightning').css('display', 'block');
-  $('.storm').css('display', 'none');
-}, function() {
-  $('.lightning').css('display', 'none');
-  $('.storm').css('display', 'block');
+$('h1.logo').hover(function () {
+    $('.lightning').css('display', 'block');
+    $('.storm').css('display', 'none');
+}, function () {
+    $('.lightning').css('display', 'none');
+    $('.storm').css('display', 'block');
 });
 
 //HIDE STUFF
@@ -22,12 +23,12 @@ $('form span').hide();
 // $('.login').hide();
 
 //LANDING PAGE
-$('#register').on('click', function() {
+$('#register').on('click', function () {
     $('.new-or-returning').hide();
     $('.register').show();
 });
 
-$('#login').on('click', function() {
+$('#login').on('click', function () {
     $('.new-or-returning').hide();
     $('.login').show();
 });
@@ -49,8 +50,7 @@ function playerNameEvent() {
 function checkEmailValid() {
     var emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var validated = true;
-    if (!emailRegEx.test($('#email').val()))
-        validated = false;
+    if (!emailRegEx.test($('#email').val())) validated = false;
     console.log(validated);
     return validated;
 }
@@ -66,22 +66,17 @@ function emailEvent() {
 //PASSWORD ENTRY
 function checkPasswordLength() {
     var validated = true;
-    if ($('#password').val().length < 7)
-        validated = false;
-        console.log(validated);
+    if ($('#password').val().length < 7) validated = false;
+    console.log(validated);
     return validated;
 }
 
 function checkPasswordValid() {
     var validated = true;
-    if (!/\d/.test($('#password').val()))
-        validated = false;
-    if (!/[a-z]/.test($('#password').val()))
-        validated = false;
-    if (!/[A-Z]/.test($('#password').val()))
-        validated = false;
-    if (/[^0-9a-zA-Z]/.test($('#password').val()))
-        validated = false;
+    if (!/\d/.test($('#password').val())) validated = false;
+    if (!/[a-z]/.test($('#password').val())) validated = false;
+    if (!/[A-Z]/.test($('#password').val())) validated = false;
+    if (/[^0-9a-zA-Z]/.test($('#password').val())) validated = false;
     return validated;
 }
 
@@ -121,7 +116,7 @@ function enableSubmit() {
 }
 
 //EVENT HANDLERS
-$('body').on('keydown', 'input', function(event) {
+$('body').on('keydown', 'input', function (event) {
     var form = $(this).parents('form:eq(0)'),
         focusable = $('form').find('.text-input').filter(':visible'),
         next = focusable.eq(focusable.index(this) + 1);
@@ -154,6 +149,5 @@ $('#password').focus(passwordEvent).keyup(passwordEvent).keyup(confirmPassword).
 //Password confirmation input
 $('#confirm-password').focus(confirmPassword).keyup(confirmPassword).keyup(enableSubmit);
 
-
-
 enableSubmit();
+//# sourceMappingURL=index.js.map
