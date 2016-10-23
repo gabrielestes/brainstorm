@@ -3,8 +3,9 @@
 $(document).ready(function () {
     //GLOBAL VARIABLES
     var allRaindrops = [];
-    var interval = 3000;
+    var interval = 5000;
     var gameDuration = null;
+    var currentGameScore = 0;
 
     //Mute button functionality
     $('.mute-button').on('click', function () {
@@ -30,10 +31,11 @@ $(document).ready(function () {
 
     //Game FUNCTIONS
     function makeItRain() {
+        currentGameScore = 0;
+        new Raindrop();
         setFocus();
         hideCursor();
-        startGame();
-        // increaseSpeed();
+        runGame();
     }
 
     // function playMusic() {
@@ -46,11 +48,14 @@ $(document).ready(function () {
     // }
 
     function hideCursor() {
-        $('html').css({ cursor: 'none' });
+        $('html').css({
+            cursor: 'none'
+        });
         setTimeout(function () {
-
             $('.game-container').mousemove(function () {
-                $('html').css({ cursor: 'auto' });
+                $('html').css({
+                    cursor: 'auto'
+                });
             });
         }, 300);
     }
@@ -60,9 +65,12 @@ $(document).ready(function () {
         input.focus();
     }
 
-    function startGame() {
+    function runGame() {
         gameDuration = setInterval(function () {
-            new Raindrop();
+            if (checkAnswers) {
+                new Raindrop();
+                interval -= 20;
+            }
         }, interval);
     }
 
@@ -72,29 +80,63 @@ $(document).ready(function () {
         }, 900000);
     }
 
-    // function increaseSpeed() {
-    //     setInterval(function() {
-    //         clearInterval(gameDuration);
-    //         interval -= 250;
-    //         startGame();
-    //         return interval;
-    //     }, 15000);
-    // }
-
     function checkAnswers(userSolution) {
+        if (!userSolution) {
+            return true;
+        }
         var numSolution = Number(userSolution);
-        console.log(allRaindrops);
+        var correctOperators = [];
         for (var index = allRaindrops.length - 1; index >= 0; index--) {
             var drop = allRaindrops[index];
-            console.log(drop.values);
             if (drop.values.solution === numSolution) {
                 allRaindrops.splice(index, 1);
-                drop.self.remove();
+                drop.self.remove().fadeOut();
+                correctOperators.push(drop.values.operator);
             }
         }
-        console.log(allRaindrops);
+        scoreSolution(correctOperators);
         userSolution = null;
         numSolution = null;
+    }
+
+    function scoreSolution(operators) {
+        var scoreValue = 0;
+        if (operators.length === 0) {
+            scoreValue = "incorrect";
+        } else {
+            var multiplier = operators.length;
+            for (var index = 0; index < operators.length; index++) {
+                switch (operators[index]) {
+                    case "+":
+                        scoreValue = (scoreValue + 1000) * multiplier;
+                        break;
+                    case "-":
+                        scoreValue = (scoreValue + 1500) * multiplier;
+                        break;
+                    case "*":
+                        scoreValue = (scoreValue + 2000) * multiplier;
+                        break;
+                    case "/":
+                        scoreValue = (scoreValue + 2500) * multiplier;
+                        break;
+                    default:
+                        console.log("something went wrong");
+                        break;
+                }
+            }
+            multiplier = 0;
+        }
+        postScore(scoreValue);
+    }
+
+    function postScore(scoreValue) {
+        if (scoreValue === "incorrect") {
+            $('.solution-score').text(scoreValue);
+        } else {
+            $('.solution-score').text("CORRECT! : +" + scoreValue);
+            currentGameScore += scoreValue;
+            $('.current-score').text("SCORE : " + currentGameScore);
+        }
     }
 
     //CONTRUCTORS
