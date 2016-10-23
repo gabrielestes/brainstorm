@@ -22,6 +22,26 @@ body.profile {
       box-shadow: 0 8px 6px -6px black;
       transition: all 1.5s ease-in-out;
 
+      @include media(desktop) {
+        width: 40%;
+      }
+
+      @include media(desktop) {
+        width: 50%;
+      }
+
+      @include media(tabletSmall) {
+        width: 60%;
+      }
+
+      @include media(mobile2) {
+        width: 80%;
+      }
+
+      @include media(mobile2) {
+        width: 90%;
+      }
+
       &.active {
           background: lightgrey;
           color: $pomegranate;

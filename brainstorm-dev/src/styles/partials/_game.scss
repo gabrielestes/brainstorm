@@ -1,57 +1,142 @@
-body {
-    background-color: #C8D5B9;
+body.game {
+  background: url('../../images/arches.png');
+  height: 100%;
 }
 
 .mute-button {
     float: left;
     height: 40px;
     width: 60px;
-    background-color: #FAF3DD;
+    background-color: $offWhite;
     position: absolute;
     top: 20%;
     left: 4%;
     border-radius: 10px;
-    border: 3px solid #717C89;
+    border: 3px solid $raven;
     font-size: 1em;
+    color: $pomegranate;
 
-    &:active {
-      background-color: #F4442E;
+    @include media(tablet) {
+      top: 93%;
+      left: 5%;
+      height: 40px;
+      width: 80px;
+      position: fixed;
+      z-index: 50;
+    }
+
+    &.active {
+        background-color: $pomegranate;
+        color: $offWhite;
     }
 }
 
 .start-game {
-  background-color: #FAF3DD;
-  position: absolute;
-  border-radius: 10px;
-  height: 120px;
-  width: 275px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3em;
-  color: #F4442E;
+    background-color: $pomegranate;
+    position: absolute;
+    border-radius: 10px;
+    height: 110px;
+    width: 275px;
+    top: 65%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3em;
+    color: $offWhite;
+    z-index: 1;
 }
 
 .game-container {
     width: 75%;
     height: 100vh;
-    margin: 5px 12.5%;
-    background-color: #68B0AB;
+    margin: 20px 12.5%;
+    background: linear-gradient(to bottom, #b6bcc3 0%,#8cb3d9 100%);
     border: black 3px solid;
     border-radius: 15px;
     overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
 
-    &active {
-      opacity: .1;
+      .cloudOne {
+        height: 175px;
+        position: absolute;
+        top: -30px;
+        left: -2%;
+        z-index: 1;
+        transition: all 1s ease;
+
+        @include media(mobile) {
+          height: 100px;
+          top: -15px;
+        }
+      }
+
+      .cloudTwo {
+        height: 175px;
+        position: absolute;
+        top: -25px;
+        left: -3%;
+        z-index: 0;
+        opacity: .7;
+        transition: all 1s ease;
+
+        @include media(mobile) {
+          height: 100px;
+          top: -10px;
+        }
+      }
+
+      .cloudThree {
+        height: 190px;
+        position: absolute;
+        top: -20px;
+        left: 70%;
+        z-index: 1;
+      }
+
+      .cloudFour {
+        height: 190px;
+        position: absolute;
+        top: -17px;
+        left: 69%;
+        z-index: 0;
+        opacity: .7;
+      }
+
+      .cloudFive {
+        position: absolute;
+        top: 0;
+        left: 20%;
+        width: 300px;
+        opacity: .5;
+      }
+      .cloudSix {
+        position: absolute;
+        top: -10px;
+        left: 40%;
+        width: 350px;
+        opacity: .8;
+      }
     }
+
+    .grass-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 75%;
+      height: 100px;
+      z-index: 5;
+    }
+
     .raindrop {
         font: {
             size: 1.5em;
         }
         text-align: center;
         line-height: 6em;
-        color: blue;
-        position: relative;
+        color: black;
+        position: absolute;
         top: 0;
         float: left;
         background-image: url('http://i.stack.imgur.com/3dFQ5.png');
@@ -59,21 +144,76 @@ body {
         padding-bottom: 6px;
         height: 100px;
         width: 75px;
+        z-index: 0;
     }
 
-    form {
-      top: 90%;
-      left: 45.5%;
-      position: relative;
-      float: left;
+    .solution {
+        top: 70%;
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
 
-    .solution-field {
-      color: #F4442E;
-        text-align: center;
-        font-size: 3.5em;
-        width: 100px;
-        z-index: 5;
+        .solution-field {
+            color: $pomegranate;
+            text-align: center;
+            font-size: 3.5em;
+            width: 100px;
+            z-index: 1;
+        }
     }
+
+    .score-submission {
+        display: none;
+    }
+.scores-container {
+  width: 100%;
+  background: $raven;
+  color: white;
+  font-family: $opensans;
+  font-size: 18px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  z-index: 500;
+  transform: translateX(-50%);
+
+  @include media(tabletMedium) {
+    font-size: 16px;
   }
 
+  @include media(mobile) {
+    font-size: 14px;
+  }
+
+  li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding-top: 6px;
+
+    @include media(tabletMedium) {
+      padding-top: 7px;
+      width: 28%;
+    }
+
+    @include media(mobile) {
+      width: 30%;
+    }
+
+    &.solution-score{
+      padding-top: 16px;
+
+      @include media(tabletMedium) {
+        padding-top: 17px;
+        width: 15%;
+      }
+
+      @include media(mobile) {
+        width: 10%;
+      }
+    }
+  }
 }
