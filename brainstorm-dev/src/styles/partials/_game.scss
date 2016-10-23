@@ -15,21 +15,21 @@ body {
     font-size: 1em;
 
     &:active {
-      background-color: #F4442E;
+        background-color: #F4442E;
     }
 }
 
 .start-game {
-  background-color: #FAF3DD;
-  position: absolute;
-  border-radius: 10px;
-  height: 120px;
-  width: 275px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3em;
-  color: #F4442E;
+    background-color: #FAF3DD;
+    position: absolute;
+    border-radius: 10px;
+    height: 120px;
+    width: 275px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    color: #F4442E;
 }
 
 .game-container {
@@ -42,8 +42,9 @@ body {
     overflow: hidden;
 
     &active {
-      opacity: .1;
+        opacity: 0.1;
     }
+
     .raindrop {
         font: {
             size: 1.5em;
@@ -61,19 +62,22 @@ body {
         width: 75px;
     }
 
-    form {
-      top: 90%;
-      left: 45.5%;
-      position: relative;
-      float: left;
+    .solution {
+        top: 90%;
+        left: 45.5%;
+        position: relative;
+        float: left;
 
-    .solution-field {
-      color: #F4442E;
-        text-align: center;
-        font-size: 3.5em;
-        width: 100px;
-        z-index: 5;
+        .solution-field {
+            color: #F4442E;
+            text-align: center;
+            font-size: 3.5em;
+            width: 100px;
+            z-index: 5;
+        }
     }
-  }
 
+    .score-submission {
+        display: none;
+    }
 }

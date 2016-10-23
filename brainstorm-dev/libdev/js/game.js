@@ -32,9 +32,8 @@ $(document).ready(function () {
     function makeItRain() {
         setFocus();
         hideCursor();
-        new Raindrop();
         startGame();
-        increaseSpeed();
+        // increaseSpeed();
     }
 
     // function playMusic() {
@@ -47,15 +46,11 @@ $(document).ready(function () {
     // }
 
     function hideCursor() {
-        $('html').css({
-            cursor: 'none'
-        });
+        $('html').css({ cursor: 'none' });
         setTimeout(function () {
 
             $('.game-container').mousemove(function () {
-                $('html').css({
-                    cursor: 'auto'
-                });
+                $('html').css({ cursor: 'auto' });
             });
         }, 300);
     }
@@ -77,26 +72,28 @@ $(document).ready(function () {
         }, 900000);
     }
 
-    function increaseSpeed() {
-        setInterval(function () {
-            clearInterval(gameDuration);
-            interval -= 250;
-            startGame();
-            return interval;
-        }, 15000);
-    }
+    // function increaseSpeed() {
+    //     setInterval(function() {
+    //         clearInterval(gameDuration);
+    //         interval -= 250;
+    //         startGame();
+    //         return interval;
+    //     }, 15000);
+    // }
 
     function checkAnswers(userSolution) {
         var numSolution = Number(userSolution);
-        userSolution = null;
-        allRaindrops.filter(function (drop) {
+        console.log(allRaindrops);
+        for (var index = allRaindrops.length - 1; index >= 0; index--) {
+            var drop = allRaindrops[index];
             console.log(drop.values);
-            console.log(numSolution);
             if (drop.values.solution === numSolution) {
-
+                allRaindrops.splice(index, 1);
                 drop.self.remove();
             }
-        });
+        }
+        console.log(allRaindrops);
+        userSolution = null;
         numSolution = null;
     }
 
@@ -190,7 +187,7 @@ $(document).ready(function () {
 
         createRaindrop: function createRaindrop() {
             var posLeft = Math.ceil(Math.random() * 70);
-            $('.game-container').append($('<div/>').addClass('raindrop').css({
+            $('.game-container').prepend($('<div/>').addClass('raindrop').css({
                 'left': posLeft + '%'
             }).text(this.values.firstNumber + this.values.operator + this.values.secondNumber));
             this.rainFall(this.setRainSpeed());

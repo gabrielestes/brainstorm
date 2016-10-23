@@ -17,7 +17,16 @@
     %input.mute-button(type="button" value="Mute")
     %input.start-game(type="button" value="Start Game")
     .game-container.active
-      %form
+      %form.solution
         %input.solution-field(id="solution-field" type="text" placeholder="=")
+      %form.score-submission
+        %input.score-to-send(type="text" readonly="readonly")
+        %input.user-id(type="text" readonly="readonly")
+    .scores-container
+      %ul
+        %li.solution-score +100
+        %li.current-score SCORE: 0
+        %li.personal-best PERSONAL BEST: 0
+      .high-score HIGH SCORE: 0
     %script(src="libdev/js/vendor.min.js")
     %script(src="libdev/js/game.js")
