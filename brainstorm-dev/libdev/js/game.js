@@ -3,7 +3,7 @@
 $(document).ready(function () {
     //GLOBAL VARIABLES
     var allRaindrops = [];
-    var interval = 7000;
+    var interval = 6000;
     var gameDuration = null;
     var currentGameScore = 0;
     var rainSpeed = 17000;
@@ -80,7 +80,7 @@ $(document).ready(function () {
     function endGame() {
         $('.solution-field').attr("readonly", true);
         clearInterval(gameDuration);
-        $('div.raindrops').remove();
+        $('.game-container').children('.raindrops').stop();
         alert("GAME OVER");
     }
 
@@ -94,11 +94,13 @@ $(document).ready(function () {
             var drop = allRaindrops[index];
             if (drop.values.solution === numSolution) {
                 allRaindrops.splice(index, 1);
-                drop.self.remove().fadeOut();
+                drop.self.remove().fadeOut().stop();
+
                 correctOperators.push(drop.values.operator);
             }
         }
         scoreSolution(correctOperators);
+
         userSolution = null;
         numSolution = null;
     }
@@ -124,7 +126,7 @@ $(document).ready(function () {
                         scoreValue = (scoreValue + 2500) * multiplier;
                         break;
                     default:
-                        console.log("something went wrong");
+                        alert("Something went wrong");
                         break;
                 }
             }
@@ -137,9 +139,9 @@ $(document).ready(function () {
         if (scoreValue === "incorrect") {
             $('.solution-score').text(scoreValue);
         } else {
-            $('.solution-score').text("CORRECT! : " < br > "+" + scoreValue);
+            $('.solution-score').text("CORRECT! :" + "\n" + "+" + scoreValue);
             currentGameScore += scoreValue;
-            $('.current-score').text("SCORE : " < br > +currentGameScore);
+            $('.current-score').text("SCORE :" + "\n" + currentGameScore);
         }
     }
 
@@ -147,7 +149,6 @@ $(document).ready(function () {
     function setRainSpeed() {
         setInterval(function () {
             rainSpeed -= 500;
-            console.log(rainSpeed);
             return rainSpeed;
         }, 60000);
     }
@@ -243,7 +244,6 @@ $(document).ready(function () {
 
         createRaindrop: function createRaindrop() {
             var posLeft = Math.ceil(Math.random() * 69 + 13);
-            console.log(posLeft);
             $('.game-container').prepend($('<div/>').addClass('raindrop').css({
                 'left': posLeft + '%'
             }).text(this.values.firstNumber + this.values.operator + this.values.secondNumber));
