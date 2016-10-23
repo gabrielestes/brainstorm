@@ -3,9 +3,10 @@
 $(document).ready(function () {
     //GLOBAL VARIABLES
     var allRaindrops = [];
-    var interval = 5000;
+    var interval = 7000;
     var gameDuration = null;
     var currentGameScore = 0;
+    var rainSpeed = 17000;
 
     //Mute button functionality
     $('.mute-button').on('click', function () {
@@ -16,6 +17,7 @@ $(document).ready(function () {
     //Start Game button
     $('.start-game').on('click', function () {
         $('.start-game').hide();
+        $('.solution-field').attr("readonly", false);
         makeItRain();
     });
 
@@ -36,6 +38,7 @@ $(document).ready(function () {
         setFocus();
         hideCursor();
         runGame();
+        setRainSpeed();
     }
 
     // function playMusic() {
@@ -75,9 +78,10 @@ $(document).ready(function () {
     }
 
     function endGame() {
-        setTimeout(function () {
-            clearInterval(gameDuration);
-        }, 900000);
+        $('.solution-field').attr("readonly", true);
+        clearInterval(gameDuration);
+        $('div.raindrops').remove();
+        alert("GAME OVER");
     }
 
     function checkAnswers(userSolution) {
@@ -133,10 +137,19 @@ $(document).ready(function () {
         if (scoreValue === "incorrect") {
             $('.solution-score').text(scoreValue);
         } else {
-            $('.solution-score').text("CORRECT! : +" + scoreValue);
+            $('.solution-score').text("CORRECT! : " < br > "+" + scoreValue);
             currentGameScore += scoreValue;
-            $('.current-score').text("SCORE : " + currentGameScore);
+            $('.current-score').text("SCORE : " < br > +currentGameScore);
         }
+    }
+
+    //This function has to
+    function setRainSpeed() {
+        setInterval(function () {
+            rainSpeed -= 500;
+            console.log(rainSpeed);
+            return rainSpeed;
+        }, 60000);
     }
 
     //CONTRUCTORS
@@ -151,7 +164,7 @@ $(document).ready(function () {
         this.init = function () {
             this.generateProblem();
             this.self = this.createRaindrop();
-            this.rainFall(this.self, this.setRainSpeed());
+            this.rainFall(this.self, rainSpeed);
             allRaindrops.push(this);
         };
         this.init();
@@ -229,7 +242,7 @@ $(document).ready(function () {
         },
 
         createRaindrop: function createRaindrop() {
-            var posLeft = Math.ceil(Math.random() * 67 + 13);
+            var posLeft = Math.ceil(Math.random() * 69 + 13);
             console.log(posLeft);
             $('.game-container').prepend($('<div/>').addClass('raindrop').css({
                 'left': posLeft + '%'
@@ -237,14 +250,12 @@ $(document).ready(function () {
             return $('.raindrop').first();
         },
 
-        setRainSpeed: function setRainSpeed() {
-            var rainSpeed = 15000;
-            return rainSpeed;
-        },
-
         rainFall: function rainFall(drop, rainSpeed) {
             $(drop).animate({
-                "top": "87%" }, rainSpeed);
+                "top": "87%"
+            }, rainSpeed, function () {
+                endGame();
+            });
         }
     };
 });
