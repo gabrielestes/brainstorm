@@ -20,9 +20,21 @@
     <input class='mute-button' type='button' value='Mute'>
     <input class='start-game' type='button' value='Start Game'>
     <div class='game-container active'>
-      <form>
+      <form class='solution'>
         <input class='solution-field' id='solution-field' placeholder='=' type='text'>
       </form>
+      <form class='score-submission'>
+        <input class='score-to-send' readonly='readonly' type='text'>
+        <input class='user-id' readonly='readonly' type='text'>
+      </form>
+    </div>
+    <div class='scores-container'>
+      <ul>
+        <li class='solution-score'>+100</li>
+        <li class='current-score'>SCORE: 0</li>
+        <li class='personal-best'>PERSONAL BEST: 0</li>
+      </ul>
+      <div class='high-score'>HIGH SCORE: 0</div>
     </div>
     <script src='libdev/js/vendor.min.js'></script>
     <script src='libdev/js/game.js'></script>
