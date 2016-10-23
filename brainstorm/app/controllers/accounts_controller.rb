@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(email: params[:user][:email], password: params[:user][:password])
     @user.save
     redirect_to 'accounts/' + "#{@user.id}"
   end

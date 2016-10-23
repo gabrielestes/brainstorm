@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: 'accounts#index'
 
-  post '/' => 'accounts#create'
+  post '/accounts' => 'accounts#create'
 
   get '/accounts/:id' => 'accounts#show'
 

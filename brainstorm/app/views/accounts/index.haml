@@ -10,7 +10,7 @@
         %input(id="register" type="button" value="REGISTER")
         %input(id="login" type="button" value="LOGIN")
   .register
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = form_for(resource, as: resource_name, url: accounts_path(resource_name)) do |f|
       %p
         %label(for="player-name-reg") Player Name
         = f.text_field :name, autofocus: true, class: "text-input", id: "player-name-reg", name: "player-name-reg", type: "text"
@@ -39,7 +39,7 @@
         %input(class="text-input" id="confirm-password" name="confirm-password" type="password")
         %span.requirement-left Please confirm your password
       %p
-        %input(id="submit-register" type="submit" value="REGISTER")
+        -# %input(id="submit-register" type="submit" value="REGISTER")
         = f.submit 'Register', id:"submit-register", type: "submit", value: "REGISTER"
         -# %input(id="submit-register" type="submit" value="REGISTER")
   .login
