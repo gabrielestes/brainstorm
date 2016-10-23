@@ -152,6 +152,7 @@ $(document).ready(function() {
         this.init = function() {
             this.generateProblem();
             this.self = this.createRaindrop();
+            this.rainFall(this.self, this.setRainSpeed());
             allRaindrops.push(this);
         };
         this.init();
@@ -229,17 +230,23 @@ $(document).ready(function() {
         },
 
         createRaindrop: function() {
-            var posLeft = Math.ceil(Math.random() * 70);
+            var posLeft = Math.ceil(Math.random() * 67 + 13);
+            console.log(posLeft);
             $('.game-container').prepend($('<div/>').addClass('raindrop').css({
                 'left': posLeft + '%'
             }).text(this.values.firstNumber + this.values.operator + this.values.secondNumber));
-            this.rainFall(this.setRainSpeed());
             return $('.raindrop').first();
         },
 
-        setRainSpeed: function() {},
+        setRainSpeed: function() {
+          var rainSpeed = 15000;
+          return rainSpeed;
+        },
 
-        rainFall: function(rainSpeed) {}
+        rainFall: function(drop, rainSpeed) {
+          $(drop).animate({
+            "top": "87%"}, rainSpeed);
+        }
     };
 
 });
