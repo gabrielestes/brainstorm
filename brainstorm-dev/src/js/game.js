@@ -1,22 +1,21 @@
 $(document).ready(function() {
     //GLOBAL VARIABLES
     var allRaindrops = [];
-    var interval = 6000;
+    var interval = 5000;
     var gameDuration = null;
     var currentGameScore = 0;
-    var rainSpeed = 17000;
-
+    var rainSpeed = 15000;
+    var audio = new Audio('embedded music/01 Heartbeats [DVD].mp3');
 
     //Mute button functionality
     $('.mute-button').on('click', function() {
         $(this).toggleClass('active');
-        $('.music').prop('muted', !$('.music').prop('muted'));
+        audio.toggle();
     });
 
     //Start Game button
     $('.start-game').on('click', function() {
-      var audio = new Audio('embedded music/01 Heartbeats [DVD].mp3');
-audio.play();
+        audio.play();
         makeItRain();
     });
 
@@ -32,8 +31,8 @@ audio.play();
 
     //Game FUNCTIONS
     function makeItRain() {
-      console.log(allRaindrops, interval, gameDuration, currentGameScore, rainSpeed);
-      $('.start-game').hide();
+        console.log(allRaindrops, interval, gameDuration, currentGameScore, rainSpeed);
+        $('.start-game').hide();
         new Raindrop();
         setFocus();
         hideCursor();
@@ -71,9 +70,9 @@ audio.play();
     }
 
     function endGame() {
-      $(this).siblings('.raindrops').remove();
-    $('.solution-field').attr("readonly", true);
-      clearInterval(gameDuration);
+        $(this).siblings('.raindrops').remove();
+        $('.solution-field').attr("readonly", true);
+        clearInterval(gameDuration);
         alert("GAME OVER");
         pushValues();
         reset();
@@ -81,16 +80,16 @@ audio.play();
     }
 
     function pushValues() {
-      $('.score-to-send').val(currentGameScore);
-      $('.score-submission').submit();
+        $('.score-to-send').val(currentGameScore);
+        $('.score-submission').submit();
     }
 
     function reset() {
-      allRaindrops = [];
-      interval = 6000;
-      gameDuration = null;
-      currentGameScore = 0;
-      rainSpeed = 17000;
+        allRaindrops = [];
+        interval = 6000;
+        gameDuration = null;
+        currentGameScore = 0;
+        rainSpeed = 17000;
     }
 
     function checkAnswers(userSolution) {
