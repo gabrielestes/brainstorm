@@ -135,7 +135,8 @@ body.game {
         }
         text-align: center;
         line-height: 6em;
-        color: black;
+        font-family: $opensans;
+        color: $tradewind;
         position: fixed;
         top: 0;
         float: left;

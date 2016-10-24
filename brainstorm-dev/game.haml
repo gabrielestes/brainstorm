@@ -8,6 +8,8 @@
     %link(rel="icon" type='image/png' href="images/storm_logo.png")
     %link(rel='stylesheet' href='libdev/styles/main.min.css')
   %body.game
+    - user = {user_name: 'Lindsey Adams', high_score: '12,000', email:'linzma87@gmail.com', twitter:'@lindsmadams', instagram:'@lindsmadams'}
+    - topPlayer = {user_name: 'Somebody Else', high_score: '20,000'}
     %header
       %img.storm(src='images/storm_logo.png' alt='grey storm logo')
       %img.lightning(src='images/storm_logo_white.png' alt='white storm logo')
@@ -15,11 +17,11 @@
       %nav.menu
         %ul.navbar
           %li.play
-            %a.play(href='#') Play
+            %a.play.active(href='game-haml.html') Play
           %li.leaderboard
-            %a.leaderboard(href='#') Leaderboard
+            %a.leaderboard(href='leaderboard-haml.html') Leaderboard
           %li.account
-            %a.account(href='#') Account
+            %a.account(href='profile-haml.html') Account
           %li.logout
             %a.logout(href='#') Logout
       %nav.menu-small
@@ -42,8 +44,8 @@
         %ul
           %li.solution-score +100
           %li.current-score SCORE: <br> 0
-          %li.personal-best PERSONAL BEST: <br> 0
-          %li.high-score HIGH SCORE: <br> 0
+          %li.personal-best PERSONAL BEST: <br> #{user[:high_score]}
+          %li.high-score HIGH SCORE: <br> #{topPlayer[:high_score]}
       %img.cloudOne(src='images/clouds_3.png' alt='cloud image')
       %img.cloudTwo(src='images/clouds_4.png' alt='cloud image')
       %img.cloudThree(src='images/clouds_5.png' alt='cloud image')

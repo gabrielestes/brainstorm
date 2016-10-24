@@ -16,6 +16,7 @@ $(document).ready(function() {
     $('.lightning').css('display', 'none');
     $('.storm').css('display', 'block');
   });
+
   // rank 1-5 for leaderboard
 function getRank() {
   $('li.player:nth-child(1)').children('p.rank').text('1');
