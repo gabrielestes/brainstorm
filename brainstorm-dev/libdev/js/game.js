@@ -3,20 +3,20 @@
 $(document).ready(function () {
     //GLOBAL VARIABLES
     var allRaindrops = [];
-    var interval = 6000;
+    var interval = 5000;
     var gameDuration = null;
     var currentGameScore = 0;
-    var rainSpeed = 17000;
+    var rainSpeed = 15000;
+    var audio = new Audio('embedded music/01 Heartbeats [DVD].mp3');
 
     //Mute button functionality
     $('.mute-button').on('click', function () {
         $(this).toggleClass('active');
-        $('.music').prop('muted', !$('.music').prop('muted'));
+        audio.toggle();
     });
 
     //Start Game button
     $('.start-game').on('click', function () {
-        var audio = new Audio('embedded music/01 Heartbeats [DVD].mp3');
         audio.play();
         makeItRain();
     });
