@@ -15,8 +15,8 @@ $(document).ready(function() {
 
     //Start Game button
     $('.start-game').on('click', function() {
-        $('.start-game').hide();
-        $('.solution-field').attr("readonly", false);
+      var audio = new Audio('embedded music/01 Heartbeats [DVD].mp3');
+audio.play();
         makeItRain();
     });
 
@@ -32,22 +32,14 @@ $(document).ready(function() {
 
     //Game FUNCTIONS
     function makeItRain() {
-        currentGameScore = 0;
+      console.log(allRaindrops, interval, gameDuration, currentGameScore, rainSpeed);
+      $('.start-game').hide();
         new Raindrop();
         setFocus();
         hideCursor();
         runGame();
         setRainSpeed();
     }
-
-    // function playMusic() {
-    //   $('.music').on("load", function() {
-    //        $('.music').play();
-    //    }, true);
-    //    $('.start').click(function() {
-    //        $('.music').play();
-    //    });
-    // }
 
     function hideCursor() {
         $('html').css({
@@ -65,6 +57,7 @@ $(document).ready(function() {
 
     function setFocus() {
         var input = $('.solution-field');
+        input.attr("readonly", false);
         input.focus();
     }
 
@@ -78,10 +71,26 @@ $(document).ready(function() {
     }
 
     function endGame() {
+      $(this).siblings('.raindrops').remove();
     $('.solution-field').attr("readonly", true);
       clearInterval(gameDuration);
-      $('.game-container').children('.raindrops').stop();
         alert("GAME OVER");
+        pushValues();
+        reset();
+        $('.start-game').show().val('Play Again');
+    }
+
+    function pushValues() {
+      $('.score-to-send').val(currentGameScore);
+      $('.score-submission').submit();
+    }
+
+    function reset() {
+      allRaindrops = [];
+      interval = 6000;
+      gameDuration = null;
+      currentGameScore = 0;
+      rainSpeed = 17000;
     }
 
     function checkAnswers(userSolution) {
@@ -94,7 +103,7 @@ $(document).ready(function() {
             var drop = allRaindrops[index];
             if (drop.values.solution === numSolution) {
                 allRaindrops.splice(index, 1);
-                drop.self.remove().fadeOut().stop();
+                drop.self.remove().stop();
 
                 correctOperators.push(drop.values.operator);
             }
