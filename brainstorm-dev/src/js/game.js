@@ -1,4 +1,23 @@
 $(document).ready(function() {
+
+    // NAV & HEADER EVENT HANDLERS
+    $('nav.menu').on('click', 'a', function() {
+      $('a').removeClass('active');
+      $(this).addClass('active');
+    });
+    $('header').on('click', 'a.menu', function() {
+      $(this).toggleClass('active');
+      $('.drop-nav').toggleClass('active');
+    });
+    $('h1.logo').hover(
+      function() {
+      $('.lightning').css('display', 'block');
+      $('.storm').css('display', 'none');
+    }, function() {
+      $('.lightning').css('display', 'none');
+      $('.storm').css('display', 'block');
+    });
+
     //GLOBAL VARIABLES
     var allRaindrops = [];
     var interval = 5000;
