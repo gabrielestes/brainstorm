@@ -1,4 +1,4 @@
-// NAV & HEADER EVENT HANDLERS
+// nav and header event handlers
 $('nav.menu').on('click', 'a', function() {
   $('a').removeClass('active');
   $(this).addClass('active');
@@ -15,6 +15,7 @@ $('h1.logo').hover(
   $('.lightning').css('display', 'none');
   $('.storm').css('display', 'block');
 });
+
 
 //HIDE STUFF
 $('form span').hide();

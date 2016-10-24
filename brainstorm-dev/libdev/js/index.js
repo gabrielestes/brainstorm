@@ -1,6 +1,6 @@
 'use strict';
 
-// NAV & HEADER EVENT HANDLERS
+// nav and header event handlers
 $('nav.menu').on('click', 'a', function () {
     $('a').removeClass('active');
     $(this).addClass('active');
