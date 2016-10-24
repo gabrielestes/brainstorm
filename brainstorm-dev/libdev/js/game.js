@@ -20,22 +20,33 @@ $(document).ready(function () {
     });
 
     //GLOBAL VARIABLES
+
     var allRaindrops = [];
-    var interval = 5000;
+    //this is the interval between the creation of new drops
+    var interval = 3000;
+    //this is the rate by which interval is decreased when each drop is made
+    var frequencyIncrese = 70;
+    //this is the amount of time(ms) that it take a drop to reach the bottom when the game begins
+    var rainSpeed = 14000;
+    //this is the amount of time(ms) which elapse before the fall speed increases
+    var increaseSpeedInterval = 30000;
     var gameDuration = null;
     var currentGameScore = 0;
-    var rainSpeed = 15000;
     var audio = new Audio('embedded music/01 Heartbeats [DVD].mp3');
 
     //Mute button functionality
     $('.mute-button').on('click', function () {
         $(this).toggleClass('active');
-        audio.toggle();
+        if (audio.play()) {
+            audio.pause();
+        } else {
+            audio.play();
+        }
     });
 
     //Start Game button
     $('.start-game').on('click', function () {
-        audio.play();
+        // audio.play();
         makeItRain();
     });
 
@@ -51,7 +62,6 @@ $(document).ready(function () {
 
     //Game FUNCTIONS
     function makeItRain() {
-        console.log(allRaindrops, interval, gameDuration, currentGameScore, rainSpeed);
         $('.start-game').hide();
         new Raindrop();
         setFocus();
@@ -83,9 +93,16 @@ $(document).ready(function () {
         gameDuration = setInterval(function () {
             if (checkAnswers) {
                 new Raindrop();
-                interval -= 20;
+                interval -= frequencyIncrese;
             }
         }, interval);
+    }
+
+    function setRainSpeed() {
+        setInterval(function () {
+            rainSpeed -= 500;
+            return rainSpeed;
+        }, increaseSpeedInterval);
     }
 
     function endGame() {
@@ -94,8 +111,8 @@ $(document).ready(function () {
         clearInterval(gameDuration);
         alert("GAME OVER");
         pushValues();
-        reset();
-        $('.start-game').show().val('Play Again');
+        // reset();
+        // $('.start-game').show().val('Play Again');
     }
 
     function pushValues() {
@@ -103,13 +120,14 @@ $(document).ready(function () {
         $('.score-submission').submit();
     }
 
-    function reset() {
-        allRaindrops = [];
-        interval = 6000;
-        gameDuration = null;
-        currentGameScore = 0;
-        rainSpeed = 17000;
-    }
+    //Page refresh on form submission makes this funciton superfluous, but I'm leaving it in because I would eventually like to preventDefault and use this for smoother gameplay
+    // function reset() {
+    //     allRaindrops = [];
+    //     interval = 3000;
+    //     gameDuration = null;
+    //     currentGameScore = 0;
+    //     rainSpeed = 14000;
+    // }
 
     function checkAnswers(userSolution) {
         if (!userSolution) {
@@ -122,12 +140,10 @@ $(document).ready(function () {
             if (drop.values.solution === numSolution) {
                 allRaindrops.splice(index, 1);
                 drop.self.remove().stop();
-
                 correctOperators.push(drop.values.operator);
             }
         }
         scoreSolution(correctOperators);
-
         userSolution = null;
         numSolution = null;
     }
@@ -170,14 +186,6 @@ $(document).ready(function () {
             currentGameScore += scoreValue;
             $('.current-score').text("SCORE :" + "\n" + currentGameScore);
         }
-    }
-
-    //This function has to
-    function setRainSpeed() {
-        setInterval(function () {
-            rainSpeed -= 500;
-            return rainSpeed;
-        }, 60000);
     }
 
     //CONTRUCTORS
@@ -241,8 +249,8 @@ $(document).ready(function () {
         },
 
         genNumDivide: function genNumDivide() {
-            var divider = Math.ceil(Math.random() * 13);
-            var operand = Math.ceil(Math.random() * 15) * divider;
+            var divider = Math.ceil(Math.random() * 12);
+            var operand = Math.ceil(Math.random() * 13) * divider;
             this.values.firstNumber = operand;
             this.values.secondNumber = divider;
         },
