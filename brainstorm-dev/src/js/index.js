@@ -52,7 +52,6 @@ function checkEmailValid() {
     var validated = true;
     if (!emailRegEx.test($('#email').val()))
         validated = false;
-    console.log(validated);
     return validated;
 }
 
@@ -69,7 +68,6 @@ function checkPasswordLength() {
     var validated = true;
     if ($('#password').val().length < 7)
         validated = false;
-        console.log(validated);
     return validated;
 }
 

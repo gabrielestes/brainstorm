@@ -158,16 +158,16 @@ $(document).ready(function() {
             for (var index = 0; index < operators.length; index++) {
                 switch (operators[index]) {
                     case "+":
-                        scoreValue = (scoreValue + 1000) * multiplier;
+                        scoreValue += 1000 * multiplier;
                         break;
                     case "-":
-                        scoreValue = (scoreValue + 1500) * multiplier;
+                        scoreValue += 1500 * multiplier;
                         break;
                     case "*":
-                        scoreValue = (scoreValue + 2000) * multiplier;
+                        scoreValue += 2000 * multiplier;
                         break;
                     case "/":
-                        scoreValue = (scoreValue + 2500) * multiplier;
+                        scoreValue += 2500 * multiplier;
                         break;
                     default:
                         alert("Something went wrong");
